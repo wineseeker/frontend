@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], fallback: ['sans-serif'] });
+const pretendard = localFont({
+    src: '../fonts/PretendardVariable.woff2',
+    display: 'swap',
+    fallback: ['sans-serif'],
+    variable: '--font-pretendard',
+})
 
+//기본적으로 나타나는 메타데이터로 페이지별로 알맞은 메타데이터를 할당해야 합니다.
 export const metadata: Metadata = {
     title: {
         template: "%s - 와인 시커",
@@ -19,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     //공통된 루트 레이아웃 여기에 작성
-    <html lang="ko">
+    <html lang="ko" className={`${pretendard.variable}`}>
     <head>
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"/>
@@ -28,7 +34,7 @@ export default function RootLayout({
         <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#b91d47"/>
         <meta name="msapplication-TileColor" content="#b91d47"/>
     </head>
-    <body className={inter.className}>{children}</body>
+    <body>{children}</body>
     </html>
   );
 }
