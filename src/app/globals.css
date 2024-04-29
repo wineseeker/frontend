@@ -22,6 +22,8 @@ body {
 
 @layer utilities {
   .text-balance {
+    /*젯브레인즈 IDE에 오류가 아님에도 오류가 뜨는 문제 있어서 해당 문제에 대한 주석 */
+    /*noinspection CssInvalidPropertyValue*/
     text-wrap: balance;
   }
 }
