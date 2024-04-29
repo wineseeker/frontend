@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Flowbite } from "flowbite-react";
+import { ThemeProvider } from 'next-themes';
 
 const pretendard = localFont({
     src: '../../fonts/PretendardVariable.woff2',
@@ -25,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     //공통된 루트 레이아웃 여기에 작성
-    <html lang="ko" className={`${pretendard.variable}`}>
+    <html lang="ko" className={`${pretendard.variable}`} suppressHydrationWarning>
     <head>
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"/>
@@ -34,7 +36,11 @@ export default function RootLayout({
         <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#b91d47"/>
         <meta name="msapplication-TileColor" content="#b91d47"/>
     </head>
-    <body>{children}</body>
+    <body>
+        <ThemeProvider attribute="class">
+            <Flowbite>{children}</Flowbite>
+        </ThemeProvider>
+    </body>
     </html>
   );
 }
