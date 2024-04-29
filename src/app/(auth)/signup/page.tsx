@@ -36,6 +36,9 @@ export default function login() {
                 </div>
                 <Button type="submit" color={"primary"}>회원가입</Button>
             </form>
+            <div className={"text-center"}>
+                이미 계정이 있으십니까? <Link href={"/login"} className={"underline font-bold"}>로그인</Link>
+            </div>
         </Card>
     )
 }

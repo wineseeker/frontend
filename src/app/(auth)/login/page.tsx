@@ -29,8 +29,8 @@ export default function login() {
                     <Label htmlFor="remember">로그인 상태 유지하기</Label>
                 </div>
                 <Button type="submit" color={"primary"}>로그인</Button>
-                <Link className={"text-center"} href={"/auth/password-reset"}>비밀번호 초기화</Link>
-                <Link className={"text-center"} href={"/auth/signup"}>회원가입</Link>
+                <div className={"text-center"}>비밀번호를 잊으셨나요? <Link className={"underline font-bold"} href={"/password-reset"}>비밀번호 초기화</Link></div>
+                <div className={"text-center"}>계정이 없으시나요? <Link className={"underline font-bold"} href={"/signup"}>회원가입</Link></div>
             </form>
         </Card>
     )
