@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Flowbite } from "flowbite-react";
+import {CustomFlowbiteTheme, Flowbite} from "flowbite-react";
 import { ThemeProvider } from 'next-themes';
 
 const pretendard = localFont({
@@ -20,6 +20,21 @@ export const metadata: Metadata = {
     description: "입문자도 쉽게 자신이 원하는 와인을 추천하는 사이트 입니다",
 };
 
+const customTheme: CustomFlowbiteTheme = {
+    button: {
+        color: {
+            primary: "text-white bg-rose-600 enabled:hover:bg-rose-700 dark:bg-rose-700 dark:enabled:hover:bg-rose-800 focus:ring-4 focus:ring-rose-500 dark:focus:ring-rose-600",
+        },
+    },
+    checkbox: {
+        root: {
+            color: {
+                primary: "text-rose-600 focus:ring-rose-600 dark:text-rose-700 dark:focus:ring-rose-600"
+            },
+        }
+    }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,9 +51,9 @@ export default function RootLayout({
         <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#b91d47"/>
         <meta name="msapplication-TileColor" content="#b91d47"/>
     </head>
-    <body>
-        <ThemeProvider attribute="class">
-            <Flowbite>{children}</Flowbite>
+    <body className={"dark:bg-gray-900 dark:text-gray-400"}>
+        <ThemeProvider attribute="class" storageKey={"flowbite-theme-mode"}>
+            <Flowbite theme={{ theme: customTheme }}>{children}</Flowbite>
         </ThemeProvider>
     </body>
     </html>
