@@ -19,7 +19,7 @@ function Search() {
     }
 
     return (
-        <TextInput name={"search"} type={"search"} className={"w-full"} placeholder="검색" defaultValue={value} icon={FaMagnifyingGlass} />
+        <TextInput name={"search"} type={"search"} className={"w-full"} color={"rose"} placeholder="검색" defaultValue={value} icon={FaMagnifyingGlass} />
     )
 }
 

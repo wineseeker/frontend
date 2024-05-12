@@ -31,10 +31,10 @@ export default function login() {
                     <TextInput id="password1comfirm" type="password" required/>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Checkbox id="privacy-agree" color={"primary"} required/>
+                    <Checkbox id="privacy-agree" color={"rose"} required/>
                     <Label htmlFor="privacy-agree"><Link href={"/privacy"} className={"text-rose-600 dark:text-rose-700"}>개인정보처리방침</Link>에 동의합니다</Label>
                 </div>
-                <Button type="submit" color={"rose"}>회원가입</Button>
+                <Button type="submit" color={"rose"} >회원가입</Button>
             </form>
             <div className={"text-center"}>
                 이미 계정이 있으십니까? <Link href={"/login"} className={"underline font-bold"}>로그인</Link>
