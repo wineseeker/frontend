@@ -23,13 +23,13 @@ export const metadata: Metadata = {
 const customTheme: CustomFlowbiteTheme = {
     button: {
         color: {
-            primary: "text-white bg-rose-600 enabled:hover:bg-rose-700 dark:bg-rose-700 dark:enabled:hover:bg-rose-800 focus:ring-4 focus:ring-rose-500 dark:focus:ring-rose-600",
+            rose: "text-white bg-rose-600 enabled:hover:bg-rose-700 dark:bg-rose-700 dark:enabled:hover:bg-rose-800 focus:ring-4 focus:ring-rose-500 dark:focus:ring-rose-600",
         },
     },
     checkbox: {
         root: {
             color: {
-                primary: "text-rose-600 focus:ring-rose-600 dark:text-rose-700 dark:focus:ring-rose-600"
+                rose: "text-rose-600 focus:ring-rose-600 dark:text-rose-700 dark:focus:ring-rose-600"
             },
         }
     }

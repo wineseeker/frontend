@@ -45,7 +45,7 @@ export default function MainLayout({children}: {children:React.ReactNode}) {
                     </li>
                     <li className={"md:order-11 flex items-center md:text-lg md:ml-8"}>
                         <Link className={"px-5"} href={"/login"}>로그인</Link>
-                        <Button as={Link} href={"/signup"} color={"primary"}><span className={"md:text-lg"}>회원가입</span></Button>
+                        <Button as={Link} href={"/signup"} color={"rose"}><span className={"md:text-lg"}>회원가입</span></Button>
                     </li>
                     <NavbarLink href={"/ranking"}>랭킹</NavbarLink>
                 </NavbarCollapse>

@@ -1,4 +1,4 @@
-import {Button, Card, Checkbox, Label, TextInput} from "flowbite-react";
+import {Button, Checkbox, Label, TextInput} from "flowbite-react";
 import type {Metadata} from "next";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function login() {
     return (
-        <Card className="mt-10 w-4/5 mx-auto sm:w-full sm:mt-0 sm:max-w-sm">
+        <>
             <h1 className={"text-2xl font-normal dark:text-white"}>회원가입</h1>
             <form className="flex flex-col gap-4">
                 <div>
@@ -34,11 +34,11 @@ export default function login() {
                     <Checkbox id="privacy-agree" color={"primary"} required/>
                     <Label htmlFor="privacy-agree"><Link href={"/privacy"} className={"text-rose-600 dark:text-rose-700"}>개인정보처리방침</Link>에 동의합니다</Label>
                 </div>
-                <Button type="submit" color={"primary"}>회원가입</Button>
+                <Button type="submit" color={"rose"}>회원가입</Button>
             </form>
             <div className={"text-center"}>
                 이미 계정이 있으십니까? <Link href={"/login"} className={"underline font-bold"}>로그인</Link>
             </div>
-        </Card>
+        </>
     )
 }
