@@ -8,7 +8,6 @@ import {
     NavbarToggle
 } from "flowbite-react";
 import Link from "next/link";
-import {redirect} from "next/navigation";
 import SearchBar from "@/app/components/ui/search-bar";
 
 export default function MainLayout({children}: {children:React.ReactNode}) {
@@ -22,16 +21,6 @@ export default function MainLayout({children}: {children:React.ReactNode}) {
             list: "mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-lg md:font-medium md:items-center"
         },
     };
-
-    async function search(formData: FormData) {
-        'use server'
-        const value = formData.get('search');
-        if (value !== null && value !== undefined) {
-            const encodedKeyword = encodeURIComponent(value.toString()).replace(/%20/g, "+");
-            return redirect(`/search?q=${encodedKeyword}`);
-        }
-        return
-    }
 
     return (
         <>
@@ -51,7 +40,7 @@ export default function MainLayout({children}: {children:React.ReactNode}) {
                 </li>
                 <NavbarCollapse className={"md:grow"}>
                     <li className={"max-md:my-2 md:order-10 md:w-max md:flex-1 md:ml-8"}>
-                        <SearchBar action={search}/>
+                        <SearchBar/>
                     </li>
                     <NavbarLink href={"/ranking"}>랭킹</NavbarLink>
                 </NavbarCollapse>

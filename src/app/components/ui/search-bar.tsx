@@ -1,6 +1,6 @@
 'use client'
 
-import {usePathname, useSearchParams} from "next/navigation";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {FaMagnifyingGlass} from "react-icons/fa6";
 import {TextInput} from "flowbite-react";
 import {Suspense} from "react";
@@ -19,17 +19,24 @@ function Search() {
     }
 
     return (
-        <TextInput name={"search"} type={"search"} className={"w-full"} color={"rose"} placeholder="검색" defaultValue={value} icon={FaMagnifyingGlass} />
+        <TextInput name={"q"} type={"search"} className={"w-full"} color={"rose"} placeholder="검색" defaultValue={value} icon={FaMagnifyingGlass} />
     )
 }
 
-interface SearchBarProps {
-    action: any;
-}
-export default function SearchBar({ action }: SearchBarProps) {
+export default function SearchBar() {
+    const router = useRouter()
+
+    async function search(formData: FormData) {
+        const query = formData.get('q');
+        if (query !== null && query !== undefined) {
+            const encodedQuery = encodeURIComponent(query.toString()).replace(/%20/g, "+");
+            router.push(`/search?q=${encodedQuery}`);
+        }
+    }
+
     return (
         <Suspense>
-            <form action={action}>
+            <form action={search}>
                 <Search />
             </form>
         </Suspense>
