@@ -32,6 +32,9 @@ const customTheme: CustomFlowbiteTheme = {
                 rose: "text-rose-600 focus:ring-rose-600 dark:text-rose-700 dark:focus:ring-rose-600"
             },
         }
+    },
+    textInput: {
+
     }
 };
 
