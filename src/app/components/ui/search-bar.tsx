@@ -10,10 +10,10 @@ export default function SearchBar() {
 
     let value = ""
 
-    if (path === '/search' && params !== undefined && params !== null && params.get('keyword') !== null) {
-        const keyword = params.get('keyword');
-        if (keyword !== null) {
-            value = keyword;
+    if (path === '/search' && params !== undefined && params !== null) {
+        const query = params.get('q');
+        if (query !== null) {
+            value = query;
         }
     }
 

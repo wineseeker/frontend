@@ -25,10 +25,10 @@ export default function MainLayout({children}: {children:React.ReactNode}) {
 
     async function search(formData: FormData) {
         'use server'
-        const keyWord = formData.get('search');
-        if (keyWord !== null && keyWord !== undefined) {
-            const encodedKeyword = encodeURIComponent(keyWord.toString()).replace(/%20/g, "+");
-            redirect(`/search?keyword=${encodedKeyword}`);
+        const value = formData.get('search');
+        if (value !== null && value !== undefined) {
+            const encodedKeyword = encodeURIComponent(value.toString()).replace(/%20/g, "+");
+            redirect(`/search?q=${encodedKeyword}`);
         }
     }
 
