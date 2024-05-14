@@ -1,6 +1,6 @@
 import type {Metadata} from "next";
 import Link from "next/link";
-import {LoginForm} from "@/app/components/ui/auth/login-form";
+import {LoginForm} from "@/app/components/auth/login-form";
 
 export const metadata: Metadata = {
     title: "로그인",

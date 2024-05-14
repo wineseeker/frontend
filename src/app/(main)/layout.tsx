@@ -8,8 +8,8 @@ import {
     NavbarToggle
 } from "flowbite-react";
 import Link from "next/link";
-import SearchBar from "@/app/components/ui/main-layout/search-bar";
-import SignupBtn from "@/app/components/ui/main-layout/signup-btn";
+import SearchBar from "@/app/components/main-layout/search-bar";
+import SignupBtn from "@/app/components/main-layout/signup-btn";
 
 export default function MainLayout({children}: {children:React.ReactNode}) {
     const customNavTheme: CustomFlowbiteTheme["navbar"] = {
