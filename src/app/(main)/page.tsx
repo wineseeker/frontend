@@ -1,5 +1,9 @@
 export default function Home() {
   return (
-      <p>메인 페이지</p>
+      <div className={"flex items-center w-full h-screen"}>
+        <div className={"h-full"}>
+          와인 시커
+        </div>
+      </div>
   );
 }

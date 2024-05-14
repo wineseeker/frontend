@@ -2,27 +2,28 @@
 
 import {Button, Checkbox, Label, TextInput} from "flowbite-react";
 import Link from "next/link";
+import {signup} from "@/app/lib/signup";
 
 export default function SignupForm() {
     return (
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" action={signup}>
             <div>
                 <div className="mb-2 block">
-                    <Label htmlFor="email1" value="이메일"/>
+                    <Label htmlFor="email" value="이메일"/>
                 </div>
-                <TextInput id="email1" type="email" placeholder="example@exmaple.com" color={"rose"} required/>
+                <TextInput id="email" name="email" type="email" placeholder="example@exmaple.com" color={"rose"} required/>
             </div>
             <div>
                 <div className="mb-2 block">
-                    <Label htmlFor="password1" value="비밀번호"/>
+                    <Label htmlFor="password" value="비밀번호"/>
                 </div>
-                <TextInput id="password1" type="password" color={"rose"} required/>
+                <TextInput id="password" name="password" type="password" color={"rose"} required/>
             </div>
             <div>
                 <div className="mb-2 block">
-                    <Label htmlFor="password1comfirm" value="비밀번호 확인"/>
+                    <Label htmlFor="passwordcomfirm" value="비밀번호 확인"/>
                 </div>
-                <TextInput id="password1comfirm" type="password" color={"rose"} required/>
+                <TextInput id="passwordcomfirm" type="password" color={"rose"} required/>
             </div>
             <div className="flex items-center gap-2">
                 <Checkbox id="privacy-agree" color={"rose"} required/>
