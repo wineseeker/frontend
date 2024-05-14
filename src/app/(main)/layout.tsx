@@ -8,7 +8,8 @@ import {
     NavbarToggle
 } from "flowbite-react";
 import Link from "next/link";
-import SearchBar from "@/app/components/ui/search-bar";
+import SearchBar from "@/app/components/ui/main-layout/search-bar";
+import SignupBtn from "@/app/components/ui/main-layout/signup-btn";
 
 export default function MainLayout({children}: {children:React.ReactNode}) {
     const customNavTheme: CustomFlowbiteTheme["navbar"] = {
@@ -31,16 +32,14 @@ export default function MainLayout({children}: {children:React.ReactNode}) {
                         <span className={"md:text-lg font-medium"}>로그인</span>
                     </Button>
                     <Link className={"max-md:hidden px-4"} href={"/login"}>로그인</Link>
-                    <Button as={Link} href={"/signup"} className={"max-md:hidden"} color={"rose"}>
-                        <span className={"md:text-lg"}>회원가입</span>
-                    </Button>
-                    <NavbarToggle/>
+                    <SignupBtn />
+                    <NavbarToggle />
                 </li>
                 <NavbarCollapse className={"md:grow md:ml-8"}>
                     <NavbarLink href={"/survey"}>추천</NavbarLink>
                     <NavbarLink href={"/ranking"}>랭킹</NavbarLink>
                     <li className={"max-md:my-2 md:flex-1 md:ml-8 max-md:-order-10"}>
-                        <SearchBar/>
+                        <SearchBar />
                     </li>
                 </NavbarCollapse>
             </Navbar>
