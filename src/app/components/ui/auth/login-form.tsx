@@ -7,15 +7,15 @@ export function LoginForm() {
         <form className="flex flex-col gap-4">
             <div>
                 <div className="mb-2 block">
-                    <Label htmlFor="email1" value="이메일" />
+                    <Label htmlFor="email" value="이메일" />
                 </div>
-                <TextInput id="email1" type="email" placeholder="example@exmaple.com" required />
+                <TextInput id="email" type="email" placeholder="example@exmaple.com" color={"rose"} required />
             </div>
             <div>
                 <div className="mb-2 block">
                     <Label htmlFor="password1" value="비밀번호" />
                 </div>
-                <TextInput id="password1" type="password" required />
+                <TextInput id="password1" type="password" color={"rose"} required />
             </div>
             <div className="flex items-center gap-2">
                 <Checkbox id="remember" color={"rose"} />
