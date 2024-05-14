@@ -2,10 +2,20 @@
 
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {FaMagnifyingGlass} from "react-icons/fa6";
-import {TextInput} from "flowbite-react";
+import {CustomFlowbiteTheme, TextInput} from "flowbite-react";
 import {Suspense} from "react";
 
 function Search() {
+    const customSearchTheme: CustomFlowbiteTheme["textInput"] = {
+        field: {
+            input: {
+                sizes: {
+                    md: "p-2.3 text-md"
+                }
+            }
+        }
+    };
+
     const path = usePathname()
     const params = useSearchParams()
 
@@ -19,7 +29,7 @@ function Search() {
     }
 
     return (
-        <TextInput name={"q"} type={"search"} className={"w-full"} color={"rose"} placeholder="검색" defaultValue={value} icon={FaMagnifyingGlass} />
+        <TextInput theme={customSearchTheme} name={"q"} type={"search"} className={"w-full"} sizing={"md"} color={"rose"} placeholder="검색" defaultValue={value} icon={FaMagnifyingGlass} />
     )
 }
 

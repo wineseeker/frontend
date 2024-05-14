@@ -37,7 +37,7 @@ const customTheme: CustomFlowbiteTheme = {
         field: {
             input: {
                 colors: {
-                    rose: "border-gray-300 bg-gray-50 text-gray-900 focus:border-rose-600 focus:ring-rose-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-rose-600 dark:focus:border-rose-600 dark:focus:ring-rose-600"
+                    rose: "border-gray-300 bg-gray-50 text-gray-900 focus:border-rose-500 focus:ring-rose-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-rose-600 dark:focus:border-rose-600 dark:focus:ring-rose-600"
                 }
             }
         }
