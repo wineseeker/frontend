@@ -26,9 +26,13 @@ export default function SignupForm() {
             </div>
             <div className="flex items-center gap-2">
                 <Checkbox id="privacy-agree" color={"rose"} required/>
-                <Label htmlFor="privacy-agree"><Link href={"/privacy"}
-                                                     className={"text-rose-600 dark:text-rose-700"}>개인정보처리방침</Link>에
-                    동의합니다</Label>
+                <Label htmlFor="privacy-agree">
+                    <Link href={"/privacy"}
+                          className={"text-rose-600 dark:text-rose-700"} >
+                        개인정보처리방침
+                    </Link>
+                    에 동의합니다
+                </Label>
             </div>
             <Button type="submit" color={"rose"}>회원가입</Button>
         </form>

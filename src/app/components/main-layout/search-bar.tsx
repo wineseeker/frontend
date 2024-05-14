@@ -29,7 +29,15 @@ function Search() {
     }
 
     return (
-        <TextInput theme={customSearchTheme} name={"q"} type={"search"} className={"w-full"} sizing={"md"} color={"rose"} placeholder="검색" defaultValue={value} icon={FaMagnifyingGlass} />
+        <TextInput theme={customSearchTheme}
+                   name={"q"}
+                   type={"search"}
+                   className={"w-full"}
+                   sizing={"md"}
+                   color={"rose"}
+                   placeholder="검색"
+                   defaultValue={value}
+                   icon={FaMagnifyingGlass} />
     )
 }
 

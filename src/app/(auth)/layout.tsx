@@ -9,7 +9,9 @@ export default function Layout ({children}: {children: React.ReactNode}) {
             </Card>
             <div className={"w-4/5 mx-auto sm:w-full sm:max-w-sm text-center"}>
                 <ul>
-                    <li className={"my-7"}><Link href={"/privacy"} className={"hover:underline"}>개인정보처리방침</Link></li>
+                    <li className={"my-7"}>
+                        <Link href={"/privacy"} className={"hover:underline"}>개인정보처리방침</Link>
+                    </li>
                 </ul>
             </div>
         </div>
