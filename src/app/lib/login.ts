@@ -13,7 +13,10 @@ export async function login(formData: FormData) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email: formData.get('email')?.toString(), password: formData.get('password')?.toString()})
+        body: JSON.stringify({
+            email: formData.get('email')?.toString(),
+            password: formData.get('password')?.toString()
+        })
     })
 
     if (res.status === 200) {

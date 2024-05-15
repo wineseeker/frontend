@@ -13,7 +13,11 @@ export async function signup(formData: FormData) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({'email': formData.get('email')?.toString(), password: formData.get('password')?.toString()})
+        body: JSON.stringify({
+            email: formData.get('email')?.toString(),
+            password: formData.get('password')?.toString(),
+            retypePw: formData.get('retypePw')?.toString()
+        })
     })
 
     if (res.status === 200) {
