@@ -2,15 +2,22 @@
 
 import {Button, Checkbox, Label, TextInput} from "flowbite-react";
 import {login} from "@/app/lib/login";
+import {useEffect, useRef} from "react";
 
 export function LoginForm() {
+    const emailInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        emailInputRef.current?.focus();
+    },[])
+
     return (
         <form className="flex flex-col gap-4" action={login}>
             <div>
                 <div className="mb-2 block">
                     <Label htmlFor="email" value="이메일" />
                 </div>
-                <TextInput id="email" name="email" type="email" placeholder="example@exmaple.com" color={"rose"} required />
+                <TextInput id="email" name="email" type="email" placeholder="example@exmaple.com" color={"rose"} ref={emailInputRef} required />
             </div>
             <div>
                 <div className="mb-2 block">
