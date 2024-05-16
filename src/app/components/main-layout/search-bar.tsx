@@ -37,7 +37,8 @@ function Search() {
                    color={"rose"}
                    placeholder="검색"
                    defaultValue={value}
-                   icon={FaMagnifyingGlass} />
+                   icon={FaMagnifyingGlass}
+                   required />
     )
 }
 
