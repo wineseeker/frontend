@@ -20,7 +20,7 @@ export async function signup(formData: FormData) {
         })
     })
 
-    if (res.status === 200) {
+    if (res.status === 201) {
         const body = await res.json();
         console.log(body);
         cookies().set({
