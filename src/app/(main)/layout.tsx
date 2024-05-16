@@ -8,32 +8,9 @@ import {
 } from "flowbite-react";
 import Link from "next/link";
 import SearchBar from "@/app/components/main-layout/search-bar";
-import {cookies} from "next/headers";
 import {UserInfo} from "@/app/components/main-layout/user-info";
 import {LoggedInInfoLoadFailedToast} from "@/app/components/main-layout/logged-in-info-load-failed-toast";
-
-async function getUserInfo () {
-    if (!cookies().has('session')) {
-        return null
-    }
-    try {
-        const res = await fetch('http://localhost:8000/account', {
-            cache: 'no-store',
-            headers: {
-                authorization: `Bearer ${cookies().get('session')?.value}`
-            }
-        })
-
-        if (res.status === 200) {
-            return await res.json()
-        } else {
-            return null
-        }
-    } catch (error) {
-        console.log(error)
-        return -1
-    }
-}
+import {getUserInfo} from "@/app/lib/get-userinfo";
 
 export default async function MainLayout({children}: {children:React.ReactNode}) {
     const customNavTheme: CustomFlowbiteTheme["navbar"] = {
@@ -54,8 +31,6 @@ export default async function MainLayout({children}: {children:React.ReactNode})
     };
 
     const userInfo = await getUserInfo();
-
-    console.log(userInfo === -1)
 
     return (
         <>
