@@ -35,8 +35,8 @@ export async function login(formData: FormData) {
             path: '/',
         }
 
-        const expires = body.expiresAt.toString()
         if (formData.get('remember')?.toString() === 'on') {
+            const expires = body.expiresAt.toString()
             cookieOption.expires = Date.parse(expires)
         }
 
