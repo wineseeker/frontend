@@ -1,11 +1,6 @@
-'use server'
-
 import {cookies} from "next/headers";
 
 export async function getUserInfo () {
-    if (!cookies().has('session')) {
-        return null
-    }
     try {
         const res = await fetch('http://localhost:8000/account', {
             cache: 'no-store',
