@@ -13,6 +13,7 @@ import {LoggedInInfoLoadFailedToast} from "@/app/components/main-layout/logged-i
 import {getUserInfo} from "@/app/lib/get-userinfo";
 
 export default async function MainLayout({children}: {children:React.ReactNode}) {
+
     const customNavTheme: CustomFlowbiteTheme["navbar"] = {
         root: {
             inner: {
