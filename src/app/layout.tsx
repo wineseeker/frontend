@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import {CustomFlowbiteTheme, Flowbite} from "flowbite-react";
 import { ThemeProvider } from 'next-themes';
+import {ToastProvider} from "@/app/components/providers/toast-provider";
+import React from "react";
 
 const pretendard = localFont({
     src: '../../fonts/PretendardVariable.woff2',
@@ -63,7 +65,9 @@ export default function RootLayout({
         <body className={"dark:bg-gray-900 dark:text-gray-400"}>
             <ThemeProvider attribute="class" storageKey={"flowbite-theme-mode"}>
                 <Flowbite theme={{ theme: customTheme }}>
-                    {children}
+                    <ToastProvider>
+                        {children}
+                    </ToastProvider>
                 </Flowbite>
             </ThemeProvider>
         </body>
