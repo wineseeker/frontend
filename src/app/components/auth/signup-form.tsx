@@ -30,7 +30,7 @@ export default function SignupForm() {
                 <div className="mb-2 block">
                     <Label htmlFor="passwordcomfirm" value="비밀번호 확인"/>
                 </div>
-                <TextInput id="passwordcomfirm" type="password" color={"rose"} required/>
+                <TextInput id="passwordcomfirm" name={"retypePw"} type="password" color={"rose"} required/>
             </div>
             <div className="flex items-center gap-2">
                 <Checkbox id="privacy-agree" color={"rose"} required/>
