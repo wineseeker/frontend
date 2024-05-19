@@ -3,7 +3,7 @@
 import {redirect} from "next/navigation";
 import {cookies} from "next/headers";
 
-export async function signup(formData: FormData) {
+export async function signup(prevState: any, formData: FormData) {
     console.log(formData);
 
     const res = await fetch('http://localhost:8000/signup', {
@@ -20,8 +20,9 @@ export async function signup(formData: FormData) {
         })
     })
 
+    const body = await res.json();
+
     if (res.status === 201) {
-        const body = await res.json();
         console.log(body);
         cookies().set({
             name: 'session',
@@ -30,5 +31,11 @@ export async function signup(formData: FormData) {
             path: '/',
         })
         return redirect(`/`)
+    }
+
+    if (body.code !== undefined && body.code !== null) {
+        return {
+            errCode: body.code
+        }
     }
 }
