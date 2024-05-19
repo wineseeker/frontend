@@ -3,7 +3,7 @@
 import {Alert, Button, Checkbox, Label, TextInput} from "flowbite-react";
 import {login} from "@/app/lib/login";
 import {useEffect, useRef} from "react";
-import { useFormState } from "react-dom";
+import {useFormState, useFormStatus} from "react-dom";
 
 const initialState = {
     message: '',
@@ -12,6 +12,7 @@ const initialState = {
 export function LoginForm() {
     const emailInputRef = useRef<HTMLInputElement>(null);
     const [state, formAction] = useFormState(login, initialState)
+    const { pending } = useFormStatus()
 
     useEffect(() => {
         emailInputRef.current?.focus();
@@ -37,7 +38,7 @@ export function LoginForm() {
                     <Checkbox id="remember" name="remember" color={"rose"} />
                     <Label htmlFor="remember">로그인 상태 유지하기</Label>
                 </div>
-                <Button type="submit" color={"rose"}>로그인</Button>
+                <Button type="submit" color={"rose"} disabled={pending}>로그인</Button>
             </form>
         </>
     )
