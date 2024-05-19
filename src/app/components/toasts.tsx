@@ -7,7 +7,6 @@ import { useContext, useEffect } from "react";
 export function Toasts() {
     const { toasts } = useContext(ToastContext);
     useEffect(() => {
-
         const toastsElements:NodeListOf<HTMLElement> = document.querySelectorAll('.toast');
 
         if (toasts.length > 1) {
