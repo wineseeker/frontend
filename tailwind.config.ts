@@ -16,7 +16,8 @@ const config: Config = {
     },
   },
   plugins: [
-      flowbite.plugin()
+      flowbite.plugin(),
+      require('@tailwindcss/typography')
   ],
   darkMode: 'selector',
 };
