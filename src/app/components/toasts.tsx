@@ -1,8 +1,8 @@
 'use client'
 
-import { ToastContext, ToastItem } from "@/app/components/providers/toast-provider";
+import { ToastContext } from "@/app/components/providers/toast-provider";
 import { Toast } from "flowbite-react";
-import {useCallback, useContext, useEffect, useRef, useState} from "react";
+import { useContext, useEffect } from "react";
 
 export function Toasts() {
     const { toasts } = useContext(ToastContext);
@@ -37,7 +37,7 @@ export function Toasts() {
                 {toasts.slice().reverse().map((toast, index) => {
                     const toastIndex = toasts.length - index - 1;
                     return (
-                        <Toast key={index} id={"toast-" + toastIndex.toString()} className={"toast"} data-index={toastIndex}>
+                        <Toast key={toast.id} id={"toast-" + toastIndex.toString()} className={"toast"} data-index={toastIndex}>
                             {toast.content}
                         </Toast>
                     );

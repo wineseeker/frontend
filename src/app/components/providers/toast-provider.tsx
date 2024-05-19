@@ -4,6 +4,7 @@ import React, {createContext, Dispatch, SetStateAction, useEffect, useState} fro
 
 //토스트 아이템 타입 정의
 export type ToastItem = {
+    id: string
     content: React.ReactElement,
     timeout: number
 }

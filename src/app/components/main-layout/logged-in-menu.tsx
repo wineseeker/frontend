@@ -1,16 +1,16 @@
 'use client'
 
-import {Avatar, CustomFlowbiteTheme, Dropdown, Toast} from "flowbite-react";
+import {Avatar, Dropdown, Toast} from "flowbite-react";
 import {logoutAction} from "@/app/lib/logout";
 import {useRouter} from "next/navigation";
 import {useContext, useEffect, useState} from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
 import {FaXmark} from "react-icons/fa6";
 import {Toasts} from "@/app/components/toasts";
+import { v4 as uuidV4 } from 'uuid'
 
 export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEmail: string}) {
     const router = useRouter()
-    const [logoutFailedCount, setLogoutFailedCount] = useState(0)
     const { toasts, setToasts } = useContext(ToastContext);
     const [logOutToast, setLogOutToast] = useState(false)
 
@@ -18,14 +18,6 @@ export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEma
     useEffect(() => {
         setToasts([])
     },[])
-
-    const customDropDownTheme: CustomFlowbiteTheme["dropdown"] = {
-        floating: {
-            arrow: {
-                base: "absolute z-10 h-2 w-2"
-            }
-        }
-    }
 
     async function onClickLogout() {
         const logout = await logoutAction()
@@ -38,6 +30,7 @@ export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEma
         } else {
             console.log('Inside else block');
             setToasts([...toasts, {
+                id: uuidV4(),
                 content: (
                     <>
                         <div

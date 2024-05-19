@@ -3,18 +3,18 @@
 import {Toast} from "flowbite-react"
 import {HiX} from "react-icons/hi"
 import { useRouter } from 'next/navigation'
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect } from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
+import { v4 as uuidV4 } from 'uuid'
 import {Toasts} from "@/app/components/toasts";
 
 export function LoggedInInfoLoadFailedToast({userInfo}:{userInfo: any}) {
-    const router = useRouter()
     const { toasts, setToasts } = useContext(ToastContext);
-    const [loggedInFailedCount, setLoggedInFailedCount] = useState(1)
 
     useEffect(() => {
         if (userInfo === -1) {
             setToasts([...toasts, {
+                id: uuidV4(),
                 content: (
                     <>
                         <div
@@ -37,7 +37,7 @@ export function LoggedInInfoLoadFailedToast({userInfo}:{userInfo: any}) {
                 timeout: 7000
             }])
         }
-    }, [loggedInFailedCount])
+    }, [])
 
     return <Toasts />
 }
