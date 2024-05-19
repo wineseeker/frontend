@@ -12,4 +12,18 @@
     /*noinspection CssInvalidPropertyValue*/
     text-wrap: balance;
   }
+
+  .main-image-mask {
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 43%, rgba(0, 0, 0, 0) 48%);
+    @media (min-width: 1536px)  {
+      mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 60%);
+    }
+  }
+
+  .main-div-bg {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 43%, #fff 48%);
+    @media (min-width: 1536px)  {
+      background: linear-gradient(to right, rgba(0, 0, 0, 0) 55%, #fff 60%);
+    }
+  }
 }
