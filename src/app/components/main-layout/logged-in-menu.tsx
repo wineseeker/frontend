@@ -5,9 +5,9 @@ import {logoutAction} from "@/app/lib/logout";
 import {useRouter} from "next/navigation";
 import {useContext, useEffect, useState} from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
-import {FaXmark} from "react-icons/fa6";
+import {FaCheck, FaXmark} from "react-icons/fa6";
 import {Toasts} from "@/app/components/toasts";
-import { v4 as uuidV4 } from 'uuid'
+import {UuidV4} from "@/app/lib/uuidv4";
 
 export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEmail: string}) {
     const router = useRouter()
@@ -26,11 +26,26 @@ export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEma
         if(logout) {
             console.log('Inside if block');
             router.refresh()
-            setToasts([])
+            setToasts([...toasts, {
+                id: UuidV4.generate(),
+                content: (
+                    <>
+                        <div
+                            className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
+                            <FaCheck className="h-5 w-5"/>
+                        </div>
+                        <div className="ml-3 text-sm font-normal">
+                            성공적으로 로그아웃 되었습니다. 브라우저 캐시를 지울 때까지 일부 페이지에서에서 아직 로그인이 되어 있는 것처럼 보일 수 있습니다.
+                        </div>
+                        <Toast.Toggle/>
+                    </>
+                ),
+                timeout: 5000
+            }])
         } else {
             console.log('Inside else block');
             setToasts([...toasts, {
-                id: uuidV4(),
+                id: UuidV4.generate(),
                 content: (
                     <>
                         <div

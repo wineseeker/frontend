@@ -2,11 +2,10 @@
 
 import {Toast} from "flowbite-react"
 import {HiX} from "react-icons/hi"
-import { useRouter } from 'next/navigation'
 import {useContext, useEffect } from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
-import { v4 as uuidV4 } from 'uuid'
 import {Toasts} from "@/app/components/toasts";
+import {UuidV4} from "@/app/lib/uuidv4";
 
 export function LoggedInInfoLoadFailedToast({userInfo}:{userInfo: any}) {
     const { toasts, setToasts } = useContext(ToastContext);
@@ -14,7 +13,7 @@ export function LoggedInInfoLoadFailedToast({userInfo}:{userInfo: any}) {
     useEffect(() => {
         if (userInfo === -1) {
             setToasts([...toasts, {
-                id: uuidV4(),
+                id: UuidV4.generate(),
                 content: (
                     <>
                         <div

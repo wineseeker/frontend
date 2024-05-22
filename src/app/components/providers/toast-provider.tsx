@@ -1,10 +1,11 @@
 'use client'
 
 import React, {createContext, Dispatch, SetStateAction, useEffect, useState} from "react";
+import {UuidV4} from "@/app/lib/uuidv4";
 
 //토스트 아이템 타입 정의
 export type ToastItem = {
-    id: string
+    readonly id: UuidV4
     content: React.ReactElement,
     timeout: number
 }

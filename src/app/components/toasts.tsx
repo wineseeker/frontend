@@ -36,7 +36,7 @@ export function Toasts() {
                 {toasts.slice().reverse().map((toast, index) => {
                     const toastIndex = toasts.length - index - 1;
                     return (
-                        <Toast key={toast.id} id={"toast-" + toastIndex.toString()} className={"toast"} data-index={toastIndex}>
+                        <Toast key={toast.id.toString()} id={"toast-" + toastIndex.toString()} className={"toast"} data-index={toastIndex}>
                             {toast.content}
                         </Toast>
                     );
