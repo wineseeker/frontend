@@ -13,7 +13,7 @@ export default function Home() {
                   </div>
                   <MainPageButton />
                   <p className={"mt-10 w-4/5 max-md:mx-auto md:ml-auto md:w-3/5"}>
-                      이미지 저작권 정보: <span lang={"en"}><a className={"hover:underline-offset-1"} href="https://commons.wikimedia.org/wiki/File:Alsatian_wines_in_a_supermarket.jpg">francois from Strasbourg, france</a>, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons</span>
+                      이미지 저작권 정보: <span lang={"en"}><a className={"hover:underline"} href="https://commons.wikimedia.org/wiki/File:Alsatian_wines_in_a_supermarket.jpg">francois from Strasbourg, france</a>, <a className={"hover:underline"} href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons</span>
                   </p>
               </main>
               <footer className={"text-white text-center mb-1 md:mr-3 md:text-black md:text-right"}>
