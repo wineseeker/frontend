@@ -3,7 +3,7 @@ import {Card} from "flowbite-react";
 
 export default function Layout ({children}: {children: React.ReactNode}) {
     return (
-        <div className={"h-screen flex flex-col justify-space-between md:justify-center"}>
+        <div className={"min-h-dvh flex flex-col justify-space-between md:justify-center"}>
             <Card className="mt-10 w-4/5 mx-auto sm:w-full sm:mt-0 sm:max-w-sm">
                 {children}
             </Card>
