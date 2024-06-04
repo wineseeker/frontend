@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
     return (
-        <div className={"mx-3 lg:max-w-screen-lg lg:mx-4 min-[1050px]:mx-auto"}>
+        <div className={"mx-3 md:container lg:max-w-screen-lg md:mx-auto"}>
             <SurveyForm />
         </div>
     )
