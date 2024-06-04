@@ -1,4 +1,5 @@
 import {MainPageButton} from "@/app/components/main-page-button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -16,8 +17,8 @@ export default function Home() {
                       이미지 저작권 정보: <span lang={"en"}><a className={"hover:underline"} href="https://commons.wikimedia.org/wiki/File:Alsatian_wines_in_a_supermarket.jpg">francois from Strasbourg, france</a>, <a className={"hover:underline"} href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>, via Wikimedia Commons</span>
                   </p>
               </main>
-              <footer className={"text-white text-center mb-1 md:mr-3 md:text-black md:text-right"}>
-                  개인정보처리방침
+              <footer className={"text-white text-center text-sm mb-1 md:mr-3 md:text-gray-500 md:text-right"}>
+                  <Link href={"/privacy"} className={"hover:underline font-bold font-gray"}>개인정보처리방침</Link>
               </footer>
           </div>
       </div>
