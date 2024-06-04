@@ -11,6 +11,7 @@ import SearchBar from "@/app/components/main-layout/search-bar";
 import {UserInfo} from "@/app/components/main-layout/user-info";
 import {LoggedInInfoLoadFailedToast} from "@/app/components/main-layout/logged-in-info-load-failed-toast";
 import {getUserInfo} from "@/app/lib/get-userinfo";
+import {Footer} from "@/app/components/main-layout/footer";
 
 export default async function MainLayout({children}: {children:React.ReactNode}) {
 
@@ -35,21 +36,26 @@ export default async function MainLayout({children}: {children:React.ReactNode})
 
     return (
         <>
-            <Navbar className={"py-6 md:py-7"} theme={customNavTheme}>
-                <NavbarBrand as={Link} href={'/'}><span className={'text-2xl'}>와인 시커</span></NavbarBrand>
-                <li className={"flex items-center ml-auto md:text-lg md:order-10 space-x-2"}>
-                    <UserInfo userInfo={userInfo} />
-                    <NavbarToggle />
-                </li>
-                <NavbarCollapse className={"md:grow md:ml-8"}>
-                    <NavbarLink href={"/survey"}>추천</NavbarLink>
-                    <NavbarLink href={"/ranking"}>랭킹</NavbarLink>
-                    <li className={"max-md:my-2 md:flex-1 md:ml-8 max-md:-order-10"}>
-                        <SearchBar/>
+            <div className={"min-h-dvh flex flex-col"}>
+                <Navbar className={"py-6 md:py-7"} theme={customNavTheme}>
+                    <NavbarBrand as={Link} href={'/'}><span className={'text-2xl'}>와인 시커</span></NavbarBrand>
+                    <li className={"flex items-center ml-auto md:text-lg md:order-10 space-x-2"}>
+                        <UserInfo userInfo={userInfo} />
+                        <NavbarToggle />
                     </li>
-                </NavbarCollapse>
-            </Navbar>
-            {children}
+                    <NavbarCollapse className={"md:grow md:ml-8"}>
+                        <NavbarLink as={Link} href={"/survey"}>추천</NavbarLink>
+                        <NavbarLink as={Link} href={"/ranking"}>랭킹</NavbarLink>
+                        <li className={"max-md:my-2 md:flex-1 md:ml-8 max-md:-order-10"}>
+                            <SearchBar/>
+                        </li>
+                    </NavbarCollapse>
+                </Navbar>
+                <div>
+                    {children}
+                </div>
+                <Footer />
+            </div>
             <LoggedInInfoLoadFailedToast userInfo={userInfo} />
         </>
 );
