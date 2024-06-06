@@ -1,9 +1,12 @@
 'use client'
 
 import {useEffect, useRef, useState} from "react";
-import {Alert, Button, Label, Radio, TextInput} from "flowbite-react";
+import {Alert, Button, Label, List, Radio, TextInput} from "flowbite-react";
 import {useFormState, useFormStatus} from "react-dom";
 import {getSurveyResult} from "@/app/lib/get-survey-result";
+import {usePathname} from "next/navigation";
+import Link from "next/link";
+import {Top10WinesList} from "@/app/components/survey/top10-wines-list";
 
 type state = {
     msg: string | undefined
@@ -13,16 +16,31 @@ const initialState: state = {
     msg: ''
 }
 
-
-function WineSurveyHeader() {
-    return <h1 className={"text-4xl font-bold"}>와인 취향 설문</h1>
-}
-
 export function SurveyForm() {
     const [question, setQuestion] = useState(1)
     const answer = useRef<Array<any>>([])
+    const answerCompleted = useRef<boolean>(false)
     const { pending } = useFormStatus()
-    const result = useRef<Object|null>(null)
+    const pathname = usePathname()
+
+    //결과
+    interface Result {
+        resultId: number,
+        result: {
+            id: number,
+            name: string,
+            ratingCount: number,
+            ratingAverage: number,
+            typeId: number,
+            sweetness: number,
+            alcohol: number,
+            tannin: number,
+            body: number,
+            acidity: number,
+            countryCode: string
+        }[]
+    }
+    const result = useRef<Result|null>(null)
 
 
      function firstQuestionSubmit(prevState: any, formData: FormData) {
@@ -81,10 +99,8 @@ export function SurveyForm() {
             tannin: tannin
         }
 
-        const res = await getSurveyResult(answer.current)
-
-        result.current = res
-
+        result.current = await getSurveyResult(answer.current)
+        answerCompleted.current = true
         setQuestion(question + 1)
 
         return {
@@ -101,9 +117,20 @@ export function SurveyForm() {
         if (question === 2) {
 
         } else if (question >= 3) {
-            history.pushState({page: 'result'}, 'Result', '/result');
+            history.pushState({page: 'result'}, 'Result', '/result/' + result.current?.resultId);
         }
     },[question])
+
+    useEffect(() => {
+        if (question >= 3 && pathname.startsWith("/survey") && answerCompleted.current) {
+            answerCompleted.current = false;
+            setQuestion(1);
+        }
+    }, [pathname]);
+
+    function WineSurveyHeader() {
+        return <h1 className={"text-4xl font-bold"}>와인 취향 설문</h1>
+    }
 
     if (question === 1) {
         return (
@@ -152,20 +179,23 @@ export function SurveyForm() {
         return (
             <form className={"flex flex-col gap-4"} action={secondFromAction}>
                 <WineSurveyHeader/>
+                {secondQuestionState?.msg && <Alert color="failure">{secondQuestionState?.msg}</Alert>}
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="body" value="바디감"/>
                     </div>
-                    <TextInput id="body" name="body" type="number" placeholder="1-5" color={"rose"} min={1} max={5}/>
+                    <TextInput id="body" name="body" type="number" placeholder="1-5" color={"rose"} step="any" min={1} max={5}
+                               required />
                 </div>
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="alcohol" value="알코올 도수"/>
                     </div>
                     <div className={"flex items-center gap-2"}>
-                        <TextInput className="grow" id="alcohol" name="alcohol" type="number" min={0} max={100}
+                        <TextInput className="grow" id="alcohol" name="alcohol" type="number" step="any" min={0} max={100}
                                    placeholder="백분율로 입력"
-                                   color={"rose"}/>
+                                   color={"rose"}
+                                   required />
                         <div className={""}>%</div>
                     </div>
                 </div>
@@ -174,32 +204,55 @@ export function SurveyForm() {
                         <Label htmlFor="acidity" value="산도"/>
                     </div>
                     <TextInput id="acidity" name="acidity" type="number" placeholder="1-5" color={"rose"} min={1}
-                               max={5}/>
+                               max={5} step="any" required />
                 </div>
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="sweetness" value="당도"/>
                     </div>
-                    <TextInput id="sweetness" name="sweetness" type="number" placeholder="1-5" color={"rose"} min={1}
-                               max={5}/>
+                    <TextInput id="sweetness" name="sweetness" type="number" placeholder="1-5"  color={"rose"} min={1}
+                               max={5} step="any" required />
                 </div>
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="tannin" value="떫은 정도"/>
                     </div>
                     <TextInput id="tannin" name="tannin" type="number" placeholder="1-5" color={"rose"} min={1}
-                               max={5}/>
+                               max={5} step="any" required />
                 </div>
                 <div className={"ml-auto flex gap-2"}>
                     <Button color={"gray"} onClick={() => setQuestion(1)}>
                         <span className={"md:text-base"}>이전</span>
                     </Button>
                     <Button color={"rose"} type={"submit"} disabled={pending}>
-                        <span className={"md:text-base"}>다음</span>
+                        <span className={"md:text-base"}>제출</span>
                     </Button>
                 </div>
             </form>
         )
+    } else if (question === 3) {
+        if (result.current === null) {
+
+        } else if (result.current === undefined) {
+            throw new Error("Oops!")
+        } else {
+            return (
+                <div className={"flex flex-col gap-4"}>
+                    <h1 className={"text-4xl font-bold"}>당신한테 맞는 와인을 찾았아요!</h1>
+                    <p className={"text-right text-sm"}>
+                        결과 ID:{" "}
+                        <Link href={"/result/" + result.current.resultId}
+                              className={"hover:underline"}>
+                            {result.current.resultId}
+                        </Link>
+                    </p>
+                    <p>당신한테 맞는 {result.current.result.length}개의 와인을 보여드릴께요</p>
+                    <List unstyled className="divide-y divide-gray-200 dark:divide-gray-700 text-black">
+                        <Top10WinesList top10Wines={result.current.result} />
+                    </List>
+                </div>
+            )
+        }
     } else {
         return null
     }

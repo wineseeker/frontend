@@ -1,14 +1,26 @@
 'use server'
 
+import {cookies} from "next/headers";
+
+type Headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization'?: string
+}
+
 export async function getSurveyResult(answer: Array<any>) {
-    console.log(answer)
+    const headers:Headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+
+    if (cookies().has('session'))
+        headers.Authorization = `Bearer ${cookies().get('session')?.value}`;
+
     const res = await fetch('http://localhost:8000/survey', {
         method: 'POST',
         cache: 'no-store',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
+        headers: headers,
         body: JSON.stringify(answer)
     })
 
@@ -19,4 +31,6 @@ export async function getSurveyResult(answer: Array<any>) {
     if (res.status === 200) {
         return res.json()
     }
+
+    return undefined
 }
