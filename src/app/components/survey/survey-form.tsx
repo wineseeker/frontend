@@ -100,7 +100,6 @@ export function SurveyForm() {
         }
 
         result.current = await getSurveyResult(answer.current)
-        answerCompleted.current = true
         setQuestion(question + 1)
 
         return {
@@ -118,11 +117,12 @@ export function SurveyForm() {
 
         } else if (question >= 3) {
             history.pushState({page: 'result'}, 'Result', '/result/' + result.current?.resultId);
+            answerCompleted.current = true
         }
     },[question])
 
     useEffect(() => {
-        if (question >= 3 && pathname.startsWith("/survey") && answerCompleted.current) {
+        if (pathname.startsWith("/survey") && answerCompleted.current) {
             answerCompleted.current = false;
             setQuestion(1);
         }
