@@ -4,7 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import {Alert, Button, Label, List, Radio, TextInput} from "flowbite-react";
 import {useFormState, useFormStatus} from "react-dom";
 import {getSurveyResult} from "@/app/lib/get-survey-result";
-import {usePathname} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import Link from "next/link";
 import {Top10WinesList} from "@/app/components/survey/top10-wines-list";
 
@@ -19,9 +19,11 @@ const initialState: state = {
 export function SurveyForm() {
     const [question, setQuestion] = useState(1)
     const answer = useRef<Array<any>>([])
+    const inputBodyRef = useRef<HTMLInputElement>(null);
     const answerCompleted = useRef<boolean>(false)
     const { pending } = useFormStatus()
     const pathname = usePathname()
+    const router = useRouter()
 
     //결과
     interface Result {
@@ -114,9 +116,10 @@ export function SurveyForm() {
 
     useEffect(() => {
         if (question === 2) {
-
+            inputBodyRef.current?.focus()
         } else if (question >= 3) {
-            history.pushState({page: 'result'}, 'Result', '/result/' + result.current?.resultId);
+            if (result.current !== null)
+                history.pushState({page: 'result'}, 'Result', '/result/' + result.current?.resultId);
             answerCompleted.current = true
         }
     },[question])
@@ -132,7 +135,10 @@ export function SurveyForm() {
         return <h1 className={"text-4xl font-bold"}>와인 취향 설문</h1>
     }
 
-    if (question === 1) {
+    if (pathname.startsWith("/result") && !answerCompleted.current) {
+        router.refresh()
+        return null
+    } else if (question === 1) {
         return (
             <form className={"flex flex-col gap-4 mb-4"} action={firstFormAction}>
                 <WineSurveyHeader />
@@ -185,7 +191,7 @@ export function SurveyForm() {
                         <Label htmlFor="body" value="바디감"/>
                     </div>
                     <TextInput id="body" name="body" type="number" placeholder="1-5" color={"rose"} step="any" min={1} max={5}
-                               required />
+                               required ref={inputBodyRef} />
                 </div>
                 <div>
                     <div className="mb-2 block">
@@ -232,7 +238,7 @@ export function SurveyForm() {
         )
     } else if (question === 3) {
         if (result.current === null) {
-
+            return null
         } else if (result.current === undefined) {
             throw new Error("Oops!")
         } else {
