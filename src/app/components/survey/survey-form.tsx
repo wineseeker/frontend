@@ -7,6 +7,7 @@ import {getSurveyResult} from "@/app/lib/get-survey-result";
 import {usePathname, useRouter} from "next/navigation";
 import Link from "next/link";
 import {Top10WinesList} from "@/app/components/survey/top10-wines-list";
+import {Header} from "@/app/components/main-layout/header";
 
 type state = {
     msg: string | undefined
@@ -132,7 +133,7 @@ export function SurveyForm() {
     }, [pathname]);
 
     function WineSurveyHeader() {
-        return <h1 className={"text-4xl font-bold"}>와인 취향 설문</h1>
+        return <Header>와인 취향 설문</Header>
     }
 
     if (pathname.startsWith("/result") && !answerCompleted.current) {
@@ -244,7 +245,7 @@ export function SurveyForm() {
         } else {
             return (
                 <div className={"flex flex-col gap-4"}>
-                    <h1 className={"text-4xl font-bold"}>당신한테 맞는 와인을 찾았아요!</h1>
+                    <Header>당신한테 맞는 와인을 찾았아요!</Header>
                     <p className={"text-right text-sm"}>
                         결과 ID:{" "}
                         <Link href={"/result/" + result.current.resultId}

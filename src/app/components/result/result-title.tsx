@@ -1,6 +1,7 @@
 'use client'
 
 import {useEffect, useState} from "react";
+import {Header} from "@/app/components/main-layout/header";
 
 export function ResultTitle({dateTime}: {dateTime: string}) {
     const [isClient, setIsClient] = useState(false)
@@ -16,7 +17,7 @@ export function ResultTitle({dateTime}: {dateTime: string}) {
     }, [])
 
     return (
-        <h1 className={"text-3xl font-bold md:text-4xl"} suppressHydrationWarning={true} >
+        <Header>
             {new Intl.DateTimeFormat("ko-KR", {
                 dateStyle: "long",
                 timeStyle: "short",
@@ -24,6 +25,6 @@ export function ResultTitle({dateTime}: {dateTime: string}) {
                 timeZone: isClient? undefined : "Asia/Seoul",
             }).format(new Date(dateTime))}
             에 완료된 설문에 대한 추천
-        </h1>
+        </Header>
     )
 }
