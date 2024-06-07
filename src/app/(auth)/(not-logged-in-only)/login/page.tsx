@@ -12,13 +12,13 @@ export default async function login() {
         <>
             <h1 className={"text-2xl font-medium dark:text-white"}>로그인</h1>
             <LoginForm/>
-            <div className={"text-center"}>
+            {/*<div className={"text-center"}>
                 비밀번호를 잊으셨나요?{' '}
                 <Link className={"underline font-bold"}
                       href={"/password-reset"}>
                     비밀번호 초기화
                 </Link>
-            </div>
+            </div>*/}
             <div className={"text-center"}>
                 계정이 없으시나요?{' '}
                 <Link className={"underline font-bold"} href={"/signup"}>
