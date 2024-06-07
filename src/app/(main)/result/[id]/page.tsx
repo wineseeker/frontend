@@ -1,5 +1,5 @@
 import {notFound} from "next/navigation";
-import {Top10WinesList} from "@/app/components/main-layout/survey/top10-wines-list";
+import {Top10WinesList} from "@/app/components/main-layout/top10-wines-list";
 import {ResultTitle} from "@/app/components/main-layout/result/result-title";
 import {Metadata, ResolvingMetadata} from "next";
 
