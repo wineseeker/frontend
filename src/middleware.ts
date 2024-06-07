@@ -16,15 +16,12 @@ export async function middleware(request: NextRequest) {
             {
                 return NextResponse.redirect(new URL('/email-verification', request.url))
             }
-
-            //이메일 인증
-            if (request.nextUrl.pathname.startsWith('/account'))
-                return NextResponse.redirect(new URL('/', request.url))
         }
 
 
-        //이메일 인증이 이미 된 유저는 메인 페이지로
-        if (userInfo.emailVerified && request.nextUrl.pathname.startsWith('/email-verification')) {
+        //이메일 인증이 이미 된 유저와 비로그인 유저는 메인 페이지로
+        if (userInfo === null ||
+            (userInfo.emailVerified && request.nextUrl.pathname.startsWith('/email-verification'))) {
             return NextResponse.redirect(new URL('/', request.url))
         }
     }
