@@ -1,6 +1,6 @@
 import {notFound} from "next/navigation";
-import {Top10WinesList} from "@/app/components/survey/top10-wines-list";
-import {ResultTitle} from "@/app/components/result/result-title";
+import {Top10WinesList} from "@/app/components/main-layout/survey/top10-wines-list";
+import {ResultTitle} from "@/app/components/main-layout/result/result-title";
 import {Metadata, ResolvingMetadata} from "next";
 
 type Result = {

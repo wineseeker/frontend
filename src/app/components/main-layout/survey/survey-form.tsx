@@ -6,7 +6,7 @@ import {useFormState, useFormStatus} from "react-dom";
 import {getSurveyResult} from "@/app/lib/get-survey-result";
 import {usePathname, useRouter} from "next/navigation";
 import Link from "next/link";
-import {Top10WinesList} from "@/app/components/survey/top10-wines-list";
+import {Top10WinesList} from "@/app/components/main-layout/survey/top10-wines-list";
 import {Header} from "@/app/components/main-layout/header";
 
 type state = {
