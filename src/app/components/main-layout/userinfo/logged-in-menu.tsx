@@ -7,6 +7,7 @@ import {useContext, useEffect} from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
 import {FaCheck, FaXmark} from "react-icons/fa6";
 import {UuidV4} from "@/app/lib/uuidv4";
+import Link from "next/link";
 
 export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEmail: string}) {
     const router = useRouter()
@@ -74,8 +75,8 @@ export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEma
                     <Dropdown.Header>
                         <span className="block truncate text-sm font-medium">{userEmail}</span>
                     </Dropdown.Header>
-                    <Dropdown.Item>계정 정보</Dropdown.Item>
-                    <Dropdown.Item>추천 내역</Dropdown.Item>
+                    <Dropdown.Item as={Link} href={"/account"}>계정 정보</Dropdown.Item>
+                    <Dropdown.Item as={Link} href={"/recommend-history"}>추천 내역</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={onClickLogout}>
                         로그아웃
