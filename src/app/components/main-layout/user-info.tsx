@@ -1,6 +1,6 @@
-import {LoggedInMenu} from "@/app/components/main-layout/logged-in-menu";
+import {LoggedInMenu} from "@/app/components/main-layout/userinfo/logged-in-menu";
 import {getUserInfo} from "@/app/lib/get-userinfo";
-import {NotLoggedInMenu} from "@/app/components/main-layout/not-logged-in-menu";
+import {NotLoggedInMenu} from "@/app/components/main-layout/userinfo/not-logged-in-menu";
 
 async function getGravatarURL(email: string): Promise<string> {
     const address = String( email ).trim().toLowerCase();
