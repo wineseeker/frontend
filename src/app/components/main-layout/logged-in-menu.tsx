@@ -3,16 +3,14 @@
 import {Avatar, Dropdown, Toast} from "flowbite-react";
 import {logoutAction} from "@/app/lib/logout";
 import {useRouter} from "next/navigation";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect} from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
 import {FaCheck, FaXmark} from "react-icons/fa6";
-import {Toasts} from "@/app/components/toasts";
 import {UuidV4} from "@/app/lib/uuidv4";
 
 export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEmail: string}) {
     const router = useRouter()
     const { toasts, setToasts } = useContext(ToastContext);
-    const [logOutToast, setLogOutToast] = useState(false)
 
     //로그인 정보 실패 토스트 로드가 된 적이 있는 경우 로그인이 성공한 경우에도 이 토스트가 뜨는 경우가 있으니 삭제처리
     useEffect(() => {
@@ -58,7 +56,6 @@ export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEma
                 ),
                 timeout: 5000
             }])
-            setLogOutToast(true)
         }
     }
 
@@ -84,7 +81,6 @@ export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEma
                         로그아웃
                     </Dropdown.Item>
             </Dropdown>
-            {logOutToast && <Toasts />}
         </>
     )
 }

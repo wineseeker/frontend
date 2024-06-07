@@ -4,7 +4,7 @@ import { ToastContext } from "@/app/components/providers/toast-provider";
 import { Toast } from "flowbite-react";
 import { useContext, useEffect } from "react";
 
-export function Toasts() {
+export function Toasts({children}: {children: React.ReactNode}) {
     const { toasts } = useContext(ToastContext);
     useEffect(() => {
         const toastsElements:NodeListOf<HTMLElement> = document.querySelectorAll('.toast');
@@ -30,20 +30,28 @@ export function Toasts() {
         });
     }, [toasts]);
 
-    if (toasts && toasts.length > 0) {
-        return (
-            <div className="flex flex-col gap-4 fixed bottom-5 right-5">
-                {toasts.slice().reverse().map((toast, index) => {
-                    const toastIndex = toasts.length - index - 1;
-                    return (
-                        <Toast key={toast.id.toString()} id={"toast-" + toastIndex.toString()} className={"toast"} data-index={toastIndex}>
-                            {toast.content}
-                        </Toast>
-                    );
-                })}
-            </div>
-        );
+    function ToastsElement() {
+        if (toasts && toasts.length > 0) {
+            return (
+                <div className="flex flex-col gap-4 fixed bottom-5 right-5">
+                    {toasts.slice().reverse().map((toast, index) => {
+                        const toastIndex = toasts.length - index - 1;
+                        return (
+                            <Toast key={toast.id.toString()} id={"toast-" + toastIndex.toString()} className={"toast"} data-index={toastIndex}>
+                                {toast.content}
+                            </Toast>
+                        );
+                    })}
+                </div>
+            );
+        }
+        return null
     }
 
-    return null;
+    return (
+        <>
+            {children}
+            <ToastsElement />
+        </>
+    );
 }

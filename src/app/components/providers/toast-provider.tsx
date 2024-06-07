@@ -2,6 +2,7 @@
 
 import React, {createContext, Dispatch, SetStateAction, useEffect, useState} from "react";
 import {UuidV4} from "@/app/lib/uuidv4";
+import {Toasts} from "@/app/components/toasts";
 
 //토스트 아이템 타입 정의
 export type ToastItem = {
@@ -36,7 +37,9 @@ export function ToastProvider({children}:{children: React.ReactNode}) {
 
     return (
         <ToastContext.Provider value={{toasts, setToasts}}>
-            {children}
+            <Toasts>
+                {children}
+            </Toasts>
         </ToastContext.Provider>
     )
 }

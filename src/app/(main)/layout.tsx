@@ -9,8 +9,6 @@ import {
 import Link from "next/link";
 import SearchBar from "@/app/components/main-layout/search-bar";
 import {UserInfo} from "@/app/components/main-layout/user-info";
-import {LoggedInInfoLoadFailedToast} from "@/app/components/main-layout/logged-in-info-load-failed-toast";
-import {getUserInfo} from "@/app/lib/get-userinfo";
 import {Footer} from "@/app/components/main-layout/footer";
 
 export default async function MainLayout({children}: {children:React.ReactNode}) {
@@ -32,15 +30,13 @@ export default async function MainLayout({children}: {children:React.ReactNode})
         }
     };
 
-    const userInfo = await getUserInfo();
-
     return (
         <>
             <div className={"min-h-dvh flex flex-col"}>
                 <Navbar className={"py-6 md:py-7"} theme={customNavTheme}>
                     <NavbarBrand as={Link} href={'/'}><span className={'text-2xl'}>와인 시커</span></NavbarBrand>
                     <li className={"flex items-center ml-auto md:text-lg md:order-10 space-x-2"}>
-                        <UserInfo userInfo={userInfo} />
+                        <UserInfo />
                         <NavbarToggle />
                     </li>
                     <NavbarCollapse className={"md:grow md:ml-8"}>
@@ -56,7 +52,6 @@ export default async function MainLayout({children}: {children:React.ReactNode})
                 </div>
                 <Footer />
             </div>
-            <LoggedInInfoLoadFailedToast userInfo={userInfo} />
         </>
 );
 }

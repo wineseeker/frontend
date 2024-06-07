@@ -4,10 +4,12 @@ import {Toast} from "flowbite-react"
 import {HiX} from "react-icons/hi"
 import {useContext, useEffect } from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
-import {Toasts} from "@/app/components/toasts";
 import {UuidV4} from "@/app/lib/uuidv4";
+import {MobileLoginBtn} from "@/app/components/main-layout/mobile-login-btn";
+import Link from "next/link";
+import PcSignupBtn from "@/app/components/main-layout/pc-signup-btn";
 
-export function LoggedInInfoLoadFailedToast({userInfo}:{userInfo: any}) {
+export function NotLoggedInMenu({userInfo}: {userInfo: any}) {
     const { toasts, setToasts } = useContext(ToastContext);
 
     useEffect(() => {
@@ -38,5 +40,11 @@ export function LoggedInInfoLoadFailedToast({userInfo}:{userInfo: any}) {
         }
     }, [])
 
-    return <Toasts />
+    return (
+        <>
+            <MobileLoginBtn />
+            <Link className={"max-md:hidden px-4"} href={"/login"}>로그인</Link>
+            <PcSignupBtn />
+        </>
+    )
 }
