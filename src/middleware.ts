@@ -20,8 +20,8 @@ export async function middleware(request: NextRequest) {
 
 
         //이메일 인증이 이미 된 유저와 비로그인 유저는 메인 페이지로
-        if ((userInfo === null) ||
-            ((userInfo !== -1 && userInfo.emailVerified) && request.nextUrl.pathname.startsWith('/email-verification'))) {
+        if (((userInfo === null) || (userInfo !== -1 && userInfo.emailVerified))
+            && request.nextUrl.pathname.startsWith('/email-verification')) {
             return NextResponse.redirect(new URL('/', request.url))
         }
     }
