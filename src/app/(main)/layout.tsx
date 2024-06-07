@@ -40,7 +40,7 @@ export default async function MainLayout({children}: {children:React.ReactNode})
                         <NavbarToggle />
                     </li>
                     <NavbarCollapse className={"md:grow md:ml-8"}>
-                        <NavbarLink as={Link} href={"/survey"}>추천</NavbarLink>
+                        <NavbarLink as={Link} href={"/survey"}>취향 설문하고 와인 추천 받기</NavbarLink>
                         <NavbarLink as={Link} href={"/ranking"}>랭킹</NavbarLink>
                         <li className={"max-md:my-2 md:flex-1 md:ml-8 max-md:-order-10"}>
                             <SearchBar/>
