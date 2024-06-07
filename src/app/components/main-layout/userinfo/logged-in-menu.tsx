@@ -76,7 +76,7 @@ export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEma
                         <span className="block truncate text-sm font-medium">{userEmail}</span>
                     </Dropdown.Header>
                     <Dropdown.Item as={Link} href={"/account"}>계정 정보</Dropdown.Item>
-                    <Dropdown.Item as={Link} href={"/recommend-history"}>추천 내역</Dropdown.Item>
+                    <Dropdown.Item as={Link} href={"/account/recommend-history"}>추천 내역</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={onClickLogout}>
                         로그아웃
