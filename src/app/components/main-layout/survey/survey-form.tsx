@@ -8,6 +8,7 @@ import {usePathname, useRouter} from "next/navigation";
 import Link from "next/link";
 import {Top10WinesList} from "@/app/components/main-layout/survey/top10-wines-list";
 import {Header} from "@/app/components/main-layout/header";
+import Image from 'next/image'
 
 type state = {
     msg: string | undefined
@@ -239,7 +240,29 @@ export function SurveyForm() {
         )
     } else if (question === 3) {
         if (result.current === null) {
-            return null
+            return (
+                <div className={"flex flex-col justify-space-between justify-center text-center gap-4 h-[80dvh] md:container md:mx-auto"}>
+                    <div className="flex flex-col justify-space-between text-center gap-3 md:container md:mx-auto">
+                        <Image
+                            src="https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.2/assets/svg/1f613.svg"
+                            width={96}
+                            height={96}
+                            alt="식은땀 흘리는 얼굴은"
+                            className={"mx-auto"}
+                        />
+                        <h1 className={"text-4xl font-bold"}>죄송합니다. 조건에 맞는 와인을 찾을 수 없어요.</h1>
+                        <p className={"text-lg"}>우리가 가진 데이터 중에서는 귀하가 고른 조건에 맞는 와인이 없어요.</p>
+                        <div className={"mx-auto flex space-x-3.5"}>
+                            <Button onClick={() => setQuestion(1)} color={"rose"} className={"mx-auto"}>
+                                <span className={"text-lg"}>다시 설문하기</span>
+                            </Button>
+                            <Button as={Link} href={"/"} color={"rose"} className={"mx-auto"}>
+                                <span className={"text-lg"}>홈으로 가기</span>
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            )
         } else if (result.current === undefined) {
             throw new Error("Oops!")
         } else {
