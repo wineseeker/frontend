@@ -5,9 +5,9 @@ import {HiX} from "react-icons/hi"
 import {useContext, useEffect } from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
 import {UuidV4} from "@/app/lib/uuidv4";
-import {MobileLoginBtn} from "@/app/components/main-layout/mobile-login-btn";
+import {MobileLoginBtn} from "@/app/components/main-layout/userinfo/mobile-login-btn";
 import Link from "next/link";
-import PcSignupBtn from "@/app/components/main-layout/pc-signup-btn";
+import PcSignupBtn from "@/app/components/main-layout/userinfo/pc-signup-btn";
 
 export function NotLoggedInMenu({userInfo}: {userInfo: any}) {
     const { toasts, setToasts } = useContext(ToastContext);
