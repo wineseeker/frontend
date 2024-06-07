@@ -7,7 +7,7 @@ export default async function Layout ({children}: {children: React.ReactNode}) {
     return (
         <div className={"min-h-dvh flex flex-col justify-space-between md:justify-center"}>
             <Card className="mt-10 w-4/5 mx-auto sm:w-full sm:mt-0 sm:max-w-sm">
-                {await isLoggedIn() ? <AlreadyLoggedIn /> : children}
+                {children}
             </Card>
             <div className={"w-4/5 mx-auto sm:w-full sm:max-w-sm text-center"}>
                 <ul>
