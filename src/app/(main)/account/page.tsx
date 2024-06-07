@@ -22,7 +22,8 @@ async function getAccountInfo(): Promise<AccountInfo> {
 }
 
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata(
+    {}): Promise<Metadata> {
     await getAccountInfo()
 
     return ({
