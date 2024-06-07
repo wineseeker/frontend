@@ -1,6 +1,6 @@
 import {cookies} from "next/headers";
 
-export async function getUserInfo () {
+export async function getUserInfo() {
     try {
         const res = await fetch('http://localhost:8000/account', {
             cache: 'no-store',
