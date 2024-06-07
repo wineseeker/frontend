@@ -1,6 +1,7 @@
 'use client'
 
 import {Alert, List} from "flowbite-react";
+import {Suspense} from "react";
 
 type Top10Wines = {
     id: number,
@@ -46,9 +47,11 @@ export function Top10WinesList({top10Wines}: {top10Wines: Top10Wines}) {
     return (
         <div className={"flex flex-col gap-2 "}>
             {duplicateWineNamesInfo(top10Wines)}
-            <List ordered className="divide-y space-y-0 divide-gray-200 dark:divide-gray-700 text-black bold-list-numbers">
-                {top10WinesListItem}
-            </List>
+            <Suspense>
+                <List ordered className="divide-y space-y-0 divide-gray-200 dark:divide-gray-700 text-black bold-list-numbers">
+                    {top10WinesListItem}
+                </List>
+            </Suspense>
         </div>
     )
 }
