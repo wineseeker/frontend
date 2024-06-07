@@ -7,12 +7,6 @@
 }
 
 @layer utilities {
-  .text-balance {
-    /*젯브레인즈 IDE에 오류가 아님에도 오류가 뜨는 문제 있어서 해당 문제에 대한 주석 */
-    /*noinspection CssInvalidPropertyValue*/
-    text-wrap: balance;
-  }
-
   .main-image-mask {
     mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 43%, rgba(0, 0, 0, 0) 48%);
     @media (min-width: 1536px)  {
@@ -25,5 +19,25 @@
     @media (min-width: 1536px)  {
       background: linear-gradient(to right, rgba(0, 0, 0, 0) 55%, #fff 60%);
     }
+  }
+
+  .gold-number::marker {
+    color: gold;
+  }
+
+  .sliver-number::marker {
+    color: silver;
+  }
+
+  .bronze-number::marker {
+    color: rgb(205, 127, 50);
+  }
+
+  .bold-list-numbers {
+    @apply list-decimal;
+  }
+
+  .bold-list-numbers li::marker {
+    font-weight: bold; /* 숫자를 굵게 만듭니다 */
   }
 }
