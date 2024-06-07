@@ -35,7 +35,7 @@ export function Top10WinesList({top10Wines}: {top10Wines: Top10Wines}) {
 
     const top10WinesListItem = top10Wines.map((wine, index) =>
         <List.Item key={wine.id}
-                   className={"py-2 sm:py-3 " + (
+                   className={"py-3 " + (
                        (index === 0) ? "gold-number" : (index === 1 ? "sliver-number" : ((index === 2) && "bronze-number"))
                    )}>
             <div className={"inline-flex flex-row"}>
