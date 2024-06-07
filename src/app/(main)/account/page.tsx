@@ -22,10 +22,7 @@ async function getAccountInfo(): Promise<AccountInfo> {
 }
 
 
-export async function generateMetadata(
-    {},
-    parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
     await getAccountInfo()
 
     return ({
