@@ -43,6 +43,11 @@ const customTheme: CustomFlowbiteTheme = {
                 }
             }
         }
+    },
+    spinner: {
+        color: {
+            rose: "fill-rose-600"
+        }
     }
 };
 
