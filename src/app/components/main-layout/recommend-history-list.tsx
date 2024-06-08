@@ -27,11 +27,13 @@ export function RecommendHistoryList({initialRecommendHistory}: {initialRecommen
 
     useEffect(() => {
         if (inView) {
+            // noinspection JSIgnoredPromiseFromCall
             loadMoreRecommendHistory()
         }
+        // eslint-disable-next-line
     }, [inView])
 
-    const recommendHistoryItem = recommendHistory.map((item, index) =>
+    const recommendHistoryItem = recommendHistory.map((item) =>
             <List.Item key={item.id}>
                 <Link href={"/result/" + item.id} className={"block py-4"}>
                     <div className={"inline-flex flex-row"}>
