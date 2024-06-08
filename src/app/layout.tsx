@@ -5,6 +5,7 @@ import {CustomFlowbiteTheme, Flowbite} from "flowbite-react";
 import { ThemeProvider } from 'next-themes';
 import {ToastProvider} from "@/app/components/providers/toast-provider";
 import React from "react";
+import {wineSeekerOpenGraph} from "@/app/lib/shared-metadata";
 
 const pretendard = localFont({
     src: '../../fonts/PretendardVariable.woff2',
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
         default: "와인 시커"
     },
     description: "입문자도 쉽게 자신이 원하는 와인을 추천하는 사이트 입니다",
+    openGraph: {
+        ...wineSeekerOpenGraph,
+        title: '와인 시커',
+        description: "입문자도 쉽게 자신이 원하는 와인을 추천하는 사이트 입니다",
+    }
 };
 
 const customTheme: CustomFlowbiteTheme = {
