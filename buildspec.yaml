@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - corepack enable
+      - pnpm -v
+      # pnpm store 위치 설정
+      - pnpm config set store-dir .pnpm-store
+      - pnpm install --frozen-lockfile
+  build:
+    commands:
+      - pnpm run build
+
+# Cache 추가
+cache:
+  paths:
+    - '.pnpm-store/**/*'
+    - '.next/cache/**/*'
