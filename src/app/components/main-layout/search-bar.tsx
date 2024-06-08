@@ -35,6 +35,15 @@ export default function SearchBar() {
             }
         }
 
+        useEffect(() => {
+            if (path === '/search' && params !== undefined && params !== null) {
+                const query = params.get('q');
+                if (query !== null && searchInputRef.current !== null) {
+                    searchInputRef.current.value = query;
+                }
+            }
+        }, []);
+
         return (
             <TextInput theme={customSearchTheme}
                        name={"q"}
@@ -49,15 +58,6 @@ export default function SearchBar() {
                        required />
         )
     }
-
-    useEffect(() => {
-        if (path === '/search' && params !== undefined && params !== null) {
-            const query = params.get('q');
-            if (query !== null && searchInputRef.current !== null) {
-                searchInputRef.current.value = query;
-            }
-        }
-    }, [params, path]);
 
     async function search(formData: FormData) {
         const query = formData.get('q');

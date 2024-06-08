@@ -1,7 +1,8 @@
 import {notFound} from "next/navigation";
 import {Top10WinesList} from "@/app/components/main-layout/top10-wines-list";
 import {ResultTitle} from "@/app/components/main-layout/result/result-title";
-import {Metadata, ResolvingMetadata} from "next";
+import {Metadata} from "next";
+import {wineSeekerOpenGraph} from "@/app/lib/shared-metadata";
 
 type Result = {
     dateTime: string,
@@ -22,7 +23,6 @@ type Result = {
 
 type Props = {
     params: { id: number }
-    searchParams: { [key: string]: string | string[] | undefined }
 }
 
 async function getResult(id: number): Promise<Result> {
@@ -39,8 +39,7 @@ async function getResult(id: number): Promise<Result> {
 }
 
 export async function generateMetadata(
-    { params, searchParams }: Props,
-    parent: ResolvingMetadata
+    { params }: Props,
 ): Promise<Metadata> {
     const result = await getResult(params.id)
 
@@ -54,6 +53,11 @@ export async function generateMetadata(
         title: dateTime + " (KST)에 완료된 설문에 대한 추천 결과",
         robots: {
             index: false
+        },
+        openGraph: {
+            ...wineSeekerOpenGraph,
+            title: dateTime + " (KST)에 완료된 설문에 대한 추천 결과",
+            description: dateTime + " (KST)에 완료된 설문에 대한 추천 결과 입니다"
         }
     })
 }
