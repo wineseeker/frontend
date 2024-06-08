@@ -27,3 +27,14 @@ export async function wineSearch(q: string, page?: number): Promise<Wine[]> {
 
     return res.json()
 }
+
+export async function wineSearchAutoComplete(q: string) {
+    const res = await fetch('http://localhost:8000/search/auto-complete?q=', {
+        cache: 'no-store',
+        headers: {
+            'Authorization': `Bearer ${cookies().get('session')?.value}`
+        }
+    })
+
+    return res.json()
+}
