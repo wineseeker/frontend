@@ -37,11 +37,11 @@ export async function generateMetadata(
 export default async function Page() {
     const accountInfo = await getAccountInfo();
     return (
-        <div className={"mt-4 mx-4 flex flex-col gap-4 md:container lg:max-w-screen-lg md:mx-auto"}>
+        <>
             <Header>계정 정보</Header>
             <Suspense>
                 <AccountInfoElement accountInfo={accountInfo} />
             </Suspense>
-        </div>
+        </>
     )
 }

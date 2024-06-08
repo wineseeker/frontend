@@ -25,11 +25,11 @@ export default async function Page() {
     const initialRecommendHistory = await getRecommendHistory()
 
     return (
-        <div className={"mx-3 mt-4 flex flex-col space-y-4 md:container lg:max-w-screen-lg md:mx-auto"}>
+        <>
             <Header>추천 내역</Header>
             <Suspense>
                 <RecommendHistoryList initialRecommendHistory={initialRecommendHistory} />
             </Suspense>
-        </div>
+        </>
     )
 }
