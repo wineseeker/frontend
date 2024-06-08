@@ -17,8 +17,11 @@ export async function middleware(request: NextRequest) {
         }
     }
 
-    if (userInfo === null && request.nextUrl.pathname.startsWith('/account')) {
-        return NextResponse.redirect(new URL('/login', request.url))
+    if (request.nextUrl.pathname.startsWith('/account')) {
+        if (userInfo === null)
+            return NextResponse.redirect(new URL('/login', request.url))
+        else if (userInfo === -1)
+            return NextResponse.redirect(new URL('/', request.url))
     }
 
 
