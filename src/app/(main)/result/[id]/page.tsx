@@ -3,22 +3,11 @@ import {Top10WinesList} from "@/app/components/main-layout/top10-wines-list";
 import {ResultTitle} from "@/app/components/main-layout/result/result-title";
 import {Metadata} from "next";
 import {wineSeekerOpenGraph} from "@/app/lib/shared-metadata";
+import {Wine} from "@/app/types/wine";
 
 type Result = {
     dateTime: string,
-    result: {
-        id: number,
-        name: string,
-        ratingCount: number,
-        ratingAverage: number,
-        typeId: number,
-        sweetness: number,
-        alcohol: number,
-        tannin: number,
-        body: number,
-        acidity: number,
-        countryCode: string
-    }[]
+    result: Wine[]
 }
 
 type Props = {
