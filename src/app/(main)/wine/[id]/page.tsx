@@ -2,7 +2,7 @@ import {notFound} from "next/navigation";
 import {Metadata} from "next";
 import {Wine} from "@/app/types/wine";
 import {Header} from "@/app/components/main-layout/header";
-import {List, ListItem} from "flowbite-react";
+import {Alert, List, ListItem} from "flowbite-react";
 import {regionName} from "@/app/lib/region-name";
 import {wineSeekerOpenGraph} from "@/app/lib/shared-metadata";
 
@@ -47,9 +47,13 @@ export default async function Page({ params }: { params: { id: number } }) {
     return (
         <div className={"flex flex-col gap-4 mt-4 mx-5 md:container md:mx-auto"}>
             <Header>{data.name}</Header>
+            <Alert color="info">
+                비비노 평점과 리뷰 개수는 현재의 수치와 다를 수 있습니다.
+            </Alert>
             <main className={"flex flex-col gap-4"}>
                 <List unstyled className={"text-black"}>
-                    <ListItem>비비노 평점: {data.ratingAverage}(크롤링 당시 리뷰 수: {data.ratingCount}개)</ListItem>
+                    <ListItem>비비노 평점: {data.ratingAverage} (리뷰 수: {data.ratingCount}개)</ListItem>
+                    <ListItem>국가: {regionName(data.countryCode)}</ListItem>
                     <ListItem>산도: {data.acidity.toFixed(3)}</ListItem>
                     <ListItem>당도: {data.sweetness.toFixed(3)}</ListItem>
                     <ListItem>타닌: {data.tannin.toFixed(3)}</ListItem>
