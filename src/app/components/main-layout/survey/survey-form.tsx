@@ -223,7 +223,7 @@ export function SurveyForm() {
                 </div>
                 <div>
                     <div className="mb-2 block">
-                        <Label htmlFor="tannin" value="떫은 정도"/>
+                        <Label htmlFor="tannin" value="타닌"/>
                     </div>
                     <TextInput id="tannin" name="tannin" type="number" placeholder="1-5" color={"rose"} min={1}
                                max={5} step="any" required />
