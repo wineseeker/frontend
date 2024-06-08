@@ -9,6 +9,7 @@ import Link from "next/link";
 import {Top10WinesList} from "@/app/components/main-layout/top10-wines-list";
 import {Header} from "@/app/components/main-layout/header";
 import Image from 'next/image'
+import {Wine} from "@/app/types/wine";
 
 type state = {
     msg: string | undefined
@@ -278,7 +279,7 @@ export function SurveyForm() {
                     </p>
                     <p>당신한테 맞는 {result.current.result.length}개의 와인을 보여드릴께요</p>
                     <List unstyled className="divide-y divide-gray-200 dark:divide-gray-700 text-black">
-                        <Top10WinesList top10Wines={result.current.result} />
+                        <Top10WinesList top10Wines={result.current.result as unknown as Wine[]} />
                     </List>
                 </div>
             )

@@ -7,10 +7,8 @@ import {WineListItemSummaryInformation} from "@/app/components/main-layout/wine-
 import {Wine} from "@/app/types/wine";
 import Link from "next/link";
 
-type Top10Wines = Wine[]
-
-export function Top10WinesList({top10Wines}: {top10Wines: Top10Wines}) {
-    function duplicateWineNamesInfo(wineArray: Top10Wines) {
+export function Top10WinesList({top10Wines}: {top10Wines: Wine[]}) {
+    function duplicateWineNamesInfo(wineArray: Wine[]) {
         const wineNames = new Set();
         for (const wine of wineArray) {
             if (wineNames.has(wine.name)) {
