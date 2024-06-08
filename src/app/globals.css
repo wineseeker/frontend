@@ -40,4 +40,13 @@
   .bold-list-numbers li::marker {
     font-weight: bold; /* 숫자를 굵게 만듭니다 */
   }
+
+  .item-summary-information {
+    @apply flex flex-wrap text-sm text-gray-500
+  }
+
+  .item-summary-information > *:not(:last-child)::after {
+    content: '·';
+    margin: 0 2px;
+  }
 }
