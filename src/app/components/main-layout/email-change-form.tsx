@@ -38,6 +38,7 @@ export default function EmailChangeForm() {
         } else if (step == 3) {
             router.refresh()
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[step])
 
     async function firstFromSubmit(prevState: any, formData: FormData) {
