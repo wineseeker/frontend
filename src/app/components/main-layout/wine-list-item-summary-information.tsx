@@ -11,7 +11,7 @@ export function WineListItemSummaryInformation({item}: {item: Wine}) {
             <div>당도:&nbsp;{item.sweetness.toFixed(3)}</div>
             <div>타닌:&nbsp;{item.tannin.toFixed(3)}</div>
             <div>바디감:&nbsp;{item.tannin.toFixed(3)}</div>
-            <div>비비노 평균 평점:&nbsp;{item.ratingAverage}(리뷰 개수: {item.ratingCount}개)</div>
+            <div>비비노 평균 평점:&nbsp;{item.ratingAverage} (리뷰 개수: {item.ratingCount}개)</div>
         </div>
     )
 }
