@@ -1,7 +1,7 @@
 import type {AccountInfo} from "@/app/types/account-info";
 import {cookies} from "next/headers";
 import {notFound} from "next/navigation";
-import {Metadata, ResolvingMetadata} from "next";
+import {Metadata} from "next";
 import {Header} from "@/app/components/main-layout/header";
 import { AccountInfoElement } from "@/app/components/main-layout/account-info-element";
 import {Suspense} from "react";

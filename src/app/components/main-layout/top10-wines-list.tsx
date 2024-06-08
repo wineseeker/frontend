@@ -2,7 +2,6 @@
 
 import {Alert, List} from "flowbite-react";
 import {Suspense} from "react";
-import {regionName} from "@/app/lib/region-name";
 import {WineListItemSummaryInformation} from "@/app/components/main-layout/wine-list-item-summary-information";
 import {Wine} from "@/app/types/wine";
 import Link from "next/link";

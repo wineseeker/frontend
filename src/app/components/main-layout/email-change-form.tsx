@@ -1,13 +1,11 @@
 'use client'
 
-import {Button, Checkbox, Label, TextInput} from "flowbite-react";
+import {Button, Label, TextInput} from "flowbite-react";
 import {useEffect, useRef, useState} from "react";
 import {useFormState, useFormStatus} from "react-dom";
 import {requestEmailChange} from "@/app/lib/request-email-change";
 import {emailChangeVerification} from "@/app/lib/email-change-verification";
 import {useRouter} from "next/navigation";
-import {ErrorComponent} from "@/app/components/error-component";
-import {Header} from "@/app/components/main-layout/header";
 
 type Step1State = {
     errCode: null | number | undefined
