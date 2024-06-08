@@ -63,9 +63,11 @@ export default async function Page({ params }: { params: { id: number } }) {
     const result = await getResult(params.id)
 
     return (
-        <main className={"flex flex-col gap-4 mt-4 mx-5 md:container md:mx-auto"}>
+        <div className={"flex flex-col gap-4 mt-4 mx-5 md:container md:mx-auto"}>
             <ResultTitle dateTime={result.dateTime} />
-            <Top10WinesList top10Wines={result.result} />
-        </main>
+            <main>
+                <Top10WinesList top10Wines={result.result} />
+            </main>
+        </div>
     )
 }
