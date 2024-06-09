@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/wineseeker/frontend
+
+permissions:
+  - object: /home/wineseeker/frontend
+    owner: wineseeker
+    group: ubuntu
