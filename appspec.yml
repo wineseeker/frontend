@@ -8,3 +8,13 @@ permissions:
   - object: /home/wineseeker/frontend
     owner: wineseeker
     group: wineseeker
+
+hooks:
+  BeforeInstall:
+    - location: shell-scripts/before_install.sh
+      timeout: 300
+      runas: wineseeker
+  ApplicationStart:
+    - location: shell-scripts/start_server.sh
+      timeout: 300
+      runas: wineseeker

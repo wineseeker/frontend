@@ -1,0 +1,1 @@
+pm2 start "pnpm run start" --name wine-seeker-frontend
