@@ -14,7 +14,8 @@ phases:
   build:
     commands:
       - pnpm run build
-
+artifacts:
+  - '**/*'
 # Cache 추가
 cache:
   paths:
