@@ -74,7 +74,7 @@ export default function RootLayout({
             <meta name="msapplication-TileColor" content="#b91d47"/>
         </head>
         <body className={"dark:bg-gray-900 dark:text-gray-400"}>
-            <ThemeProvider attribute="class" storageKey={"flowbite-theme-mode"}>
+            <ThemeProvider attribute="class" storageKey={"flowbite-theme-mode"} forcedTheme={"light"}>
                 <Flowbite theme={{ theme: customTheme }}>
                     <ToastProvider>
                         {children}
