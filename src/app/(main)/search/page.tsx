@@ -2,6 +2,7 @@ import {Header} from "@/app/components/main-layout/header";
 import {SearchResultList} from "@/app/components/main-layout/search/search-result-list";
 import {wineSearch} from "@/app/lib/wine-search";
 import type {Metadata} from "next";
+import {Suspense} from "react";
 
 export async function generateMetadata({searchParams}: {searchParams: { // noinspection JSUnusedLocalSymbols
         [key: string]: string | undefined }}): Promise<Metadata> {
@@ -34,7 +35,7 @@ export default async function Search({searchParams}: {searchParams: { // noinspe
         <div className={"mt-4 mx-3 flex flex-col gap-4 md:container md:mx-auto"}>
             <Header>{searchParams.q}의 검색 결과</Header>
             {(initialSearchResult.length > 0) ?
-                <SearchResultList initialSearchResult={initialSearchResult} /> :
+                <Suspense><SearchResultList initialSearchResult={initialSearchResult} /></Suspense> :
                 <p>입력하신 검색어에 대한 검색 결과가 없습니다.</p>}
         </div>
     )
