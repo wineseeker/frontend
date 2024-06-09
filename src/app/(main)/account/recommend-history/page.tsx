@@ -24,12 +24,24 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Page() {
     const initialRecommendHistory = await getRecommendHistory()
 
+    console.log("initialRecommendHistory " + initialRecommendHistory.length)
+
+    function result() {
+        if (initialRecommendHistory.length >= 1) {
+            return (
+                <Suspense>
+                    <RecommendHistoryList initialRecommendHistory={initialRecommendHistory} />
+                </Suspense>
+            )
+        } else {
+            return <p>추천 내역이 없습니다</p>
+        }
+    }
+
     return (
         <>
             <Header>추천 내역</Header>
-            <Suspense>
-                <RecommendHistoryList initialRecommendHistory={initialRecommendHistory} />
-            </Suspense>
+            {result()}
         </>
     )
 }
