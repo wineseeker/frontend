@@ -1,1 +1,1 @@
-pnpm install --fronzen-lockfile
+pnpm install --frozen-lockfile
