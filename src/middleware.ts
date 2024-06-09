@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
         }
     }
 
-    if (request.nextUrl.pathname.startsWith('/account')) {
+    if (request.nextUrl.pathname.startsWith('/account') && !request.nextUrl.pathname.startsWith('/account/delete')) {
         if (userInfo === null)
             return NextResponse.redirect(new URL('/login', request.url))
         else if (userInfo === -1)
