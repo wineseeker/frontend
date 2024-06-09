@@ -32,6 +32,7 @@ export async function login(initialState: any, formData: FormData) {
             const cookieOption: cookieOption = {
                 httpOnly: true,
                 path: '/',
+                secure: process.env.NODE_ENV === 'production'
             }
 
             if (formData.get('remember')?.toString() === 'on') {

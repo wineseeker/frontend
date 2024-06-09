@@ -29,6 +29,7 @@ export async function signup(prevState: any, formData: FormData) {
             value: body.id.toString(),
             httpOnly: true,
             path: '/',
+            secure: process.env.NODE_ENV === 'production'
         })
         return redirect(`/`)
     }
