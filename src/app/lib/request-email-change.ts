@@ -3,13 +3,15 @@
 import {cookies} from "next/headers";
 
 export async function requestEmailChange(password: string, newEmail: string):Promise<true|number> {
+    const sessionToken = cookies().get('session')?.value
+
     const res = await fetch('http://localhost:8000/account/email', {
         method: 'PATCH',
         cache: 'no-store',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${cookies().get('session')?.value}`
+            'Authorization': `Bearer ${sessionToken}`
         },
         body: JSON.stringify({
             password: password,

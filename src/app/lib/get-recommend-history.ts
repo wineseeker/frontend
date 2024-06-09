@@ -5,6 +5,8 @@ import {RecommendHistoryElement} from "@/app/types/recommend-history-element";
 import {notFound} from "next/navigation";
 
 export async function getRecommendHistory(cursorId?: number): Promise<RecommendHistoryElement[]> {
+    const sessionToken = cookies().get('session')?.value
+
     let url = 'http://localhost:8000/account/recommend-history'
 
     if (cursorId !== undefined) {
@@ -14,7 +16,7 @@ export async function getRecommendHistory(cursorId?: number): Promise<RecommendH
     const res = await fetch(url, {
         cache: 'no-store',
         headers: {
-            'Authorization': `Bearer ${cookies().get('session')?.value}`
+            'Authorization': `Bearer ${sessionToken}`
         }
     })
 

@@ -4,6 +4,7 @@ import {redirect} from "next/navigation";
 import {cookies} from "next/headers";
 
 export async function emailVerification(initialState: any, formData: FormData) {
+    const sessionToken = cookies().get('session')?.value
     try {
         const res = await fetch('http://localhost:8000/account/email-verification', {
             method: 'POST',
@@ -11,7 +12,7 @@ export async function emailVerification(initialState: any, formData: FormData) {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${cookies().get('session')?.value}`
+                'Authorization': `Bearer ${sessionToken}`
             },
             body: JSON.stringify({
                 code: formData.get('code')?.toString(),

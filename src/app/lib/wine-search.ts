@@ -5,6 +5,8 @@ import {notFound} from "next/navigation";
 import {Wine} from "@/app/types/wine";
 
 export async function wineSearch(q: string, page?: number): Promise<Wine[]> {
+    const sessionValue = cookies().get('session')?.value
+
     let url = 'http://localhost:8000/search?q=' + q
 
     if (page !== undefined) {
@@ -14,7 +16,7 @@ export async function wineSearch(q: string, page?: number): Promise<Wine[]> {
     const res = await fetch(url, {
         cache: 'no-store',
         headers: {
-            'Authorization': `Bearer ${cookies().get('session')?.value}`
+            'Authorization': `Bearer ${sessionValue}`
         }
     })
 

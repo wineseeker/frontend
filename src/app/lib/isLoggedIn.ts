@@ -3,11 +3,15 @@
 import {cookies} from "next/headers";
 
 export async function isLoggedIn () {
-    if (cookies().has('session')) {
+    const hasSession = cookies().has('session')
+
+    if (hasSession) {
+        const sessionToken = cookies().get('session')?.value
+
         const res = await fetch('http://localhost:8000/account', {
             cache: 'no-store',
             headers: {
-                authorization: `Bearer ${cookies().get('session')?.value}`
+                authorization: `Bearer ${sessionToken}`
             }
         })
 

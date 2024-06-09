@@ -14,8 +14,10 @@ export async function getSurveyResult(answer: Array<any>) {
         'Content-Type': 'application/json',
     }
 
-    if (cookies().has('session'))
-        headers.Authorization = `Bearer ${cookies().get('session')?.value}`;
+    if (cookies().has('session')) {
+        const sessionToken = cookies().get('session')?.value
+        headers.Authorization = `Bearer ${sessionToken}`;
+    }
 
     const res = await fetch('http://localhost:8000/survey', {
         method: 'POST',

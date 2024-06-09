@@ -3,13 +3,15 @@
 import {cookies} from "next/headers";
 
 export async function deleteAccount(initialState: any, formData: FormData) {
+    const sessionCookieValue = cookies().get('session')?.value
+
     const res = await fetch('http://localhost:8000/account', {
         method: 'DELETE',
         cache: 'no-store',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${cookies().get('session')?.value}`
+            'Authorization': `Bearer ${sessionCookieValue}`
         },
         body: JSON.stringify({
             password: formData.get('password')?.toString()
