@@ -68,10 +68,10 @@ export default function SearchBar() {
     }
 
     return (
-        <Suspense>
+        <>
             <form action={search}>
                 <Search />
             </form>
-        </Suspense>
+        </>
     )
 }

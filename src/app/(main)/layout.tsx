@@ -10,6 +10,7 @@ import Link from "next/link";
 import SearchBar from "@/app/components/main-layout/search-bar";
 import {UserInfo} from "@/app/components/main-layout/user-info";
 import {Footer} from "@/app/components/main-layout/footer";
+import {Suspense} from "react";
 
 export default async function MainLayout({children}: {children:React.ReactNode}) {
 
@@ -43,7 +44,9 @@ export default async function MainLayout({children}: {children:React.ReactNode})
                         <NavbarLink as={Link} href={"/survey"}>취향 설문하고 와인 추천 받기</NavbarLink>
                         <NavbarLink as={Link} href={"/ranking"}>랭킹</NavbarLink>
                         <li className={"max-md:my-2 md:flex-1 md:ml-8 max-md:-order-10"}>
-                            <SearchBar/>
+                            <Suspense>
+                                <SearchBar/>
+                            </Suspense>
                         </li>
                     </NavbarCollapse>
                 </Navbar>

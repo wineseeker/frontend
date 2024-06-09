@@ -1,5 +1,4 @@
 import type {Metadata} from "next";
-import {SurveyForm} from "@/app/components/main-layout/survey/survey-form";
 
 export const metadata: Metadata = {
     title: "랭킹",
