@@ -1,5 +1,5 @@
 import {Header} from "@/app/components/main-layout/header";
-import {PasswordChangeForm} from "@/app/components/main-layout/password-change-form";
+import {PasswordChangeForm} from "@/app/components/main-layout/account/password-change-form";
 
 export default function Page() {
     return (

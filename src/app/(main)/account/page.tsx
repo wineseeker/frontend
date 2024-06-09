@@ -3,7 +3,7 @@ import {cookies} from "next/headers";
 import {notFound} from "next/navigation";
 import {Metadata} from "next";
 import {Header} from "@/app/components/main-layout/header";
-import { AccountInfoElement } from "@/app/components/main-layout/account-info-element";
+import { AccountInfoElement } from "@/app/components/main-layout/account/account-info-element";
 import {Suspense} from "react";
 
 async function getAccountInfo(): Promise<AccountInfo> {
