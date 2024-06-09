@@ -17,22 +17,24 @@ export async function emailChangeVerification(initialState: any, formData: FormD
             })
         })
 
+        const body = await res.json()
+
         if (res.status !== 200) {
             if (res.status === 400) {
+                if (body.code === 2)
+                    return {
+                        errCode: 2
+                    }
                 return {
-                    message: '잘못된 인증 코드를 입력하셨습니다.',
+                    errCode: 1
                 }
             } else {
-                return {
-                    message: '백엔드에 문제가 발생했습니다. 나중에 다시 시도해보세요.',
-                }
+                throw new Error("Oops!")
             }
         }
 
     } catch (e) {
         console.error(e)
-        return {
-            message: '서버에 문제가 발생했습니다. 나중에 다시 시도해보세요.',
-        }
+        throw new Error("Oops!")
     }
 }

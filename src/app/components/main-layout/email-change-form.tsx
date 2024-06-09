@@ -7,16 +7,16 @@ import {requestEmailChange} from "@/app/lib/request-email-change";
 import {emailChangeVerification} from "@/app/lib/email-change-verification";
 import {useRouter} from "next/navigation";
 
-type Step1State = {
+type State = {
     errCode: null | number | undefined
 }
 
-const initialStep1State: Step1State = {
+const initialStep1State: State = {
     errCode: null
 }
 
-const initialStep2State = {
-    message: '',
+const initialStep2State: State = {
+    errCode: null,
 }
 
 export default function EmailChangeForm() {
@@ -104,8 +104,8 @@ export default function EmailChangeForm() {
                         name="new-email"
                         type="email"
                         placeholder="example@exmaple.com"
-                        color={(step1State?.errCode === 2) ? "failure" : "rose"}
-                        helperText={(step1State?.errCode === 2) && "잘못된 이메일을 입력하셨습니다"}
+                        color={(step1State?.errCode === 2 || step1State?.errCode === 3) ? "failure" : "rose"}
+                        helperText={(step1State?.errCode === 2) ? <>잘못된 이메일을 입력하셨습니다</> : (step1State?.errCode === 3 && <>이미 사용중인 이메일 입니다</> )}
                         required/>
                 </div>
 
@@ -120,9 +120,9 @@ export default function EmailChangeForm() {
                         <Label htmlFor="verification-code" value="인증 코드"/>
                     </div>
                     <TextInput id="verification-code" name="code" inputMode={"numeric"} placeholder="XXXXXXXX"
-                               color={(step2State?.message !== '') ? "failure" : "rose"}
+                               color={(step2State?.errCode !== undefined) ? "failure" : "rose"}
                                pattern="[0-9]{8}" maxLength={8} title="8자리 숫자" ref={emailVerificationCodeInputRef}
-                               helperText={(step2State?.message !== '')  && step2State?.message}
+                               helperText={(step2State?.errCode === 1) ? <>유효하지 않은 코드를 입력하셨습니다</> : (step2State?.errCode === 3 && <>누군가가 해당 이메일로 계정을 만들었습니다</>)}
                                value={verificationCode}
                                onChange={(e) => setVerificationCode(e.target.value)}
                                required/>
