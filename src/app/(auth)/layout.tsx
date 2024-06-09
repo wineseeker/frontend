@@ -1,7 +1,5 @@
 import Link from "next/link";
 import {Card} from "flowbite-react";
-import {isLoggedIn} from "@/app/lib/isLoggedIn";
-import {AlreadyLoggedIn} from "@/app/components/auth/already-logged-in";
 
 export default async function Layout ({children}: {children: React.ReactNode}) {
     return (
@@ -12,7 +10,10 @@ export default async function Layout ({children}: {children: React.ReactNode}) {
             <div className={"w-4/5 mx-auto sm:w-full sm:max-w-sm text-center"}>
                 <ul>
                     <li className={"my-7"}>
-                        <Link href={"/privacy"} className={"hover:underline"}>개인정보처리방침</Link>
+                        <Link href={"/"} className={"hover:underline"}>홈으로 돌아가기</Link>
+                    </li>
+                    <li className={"my-7"}>
+                        <Link href={"/privacy"} className={"font-bold hover:underline"}>개인정보처리방침</Link>
                     </li>
                 </ul>
             </div>
