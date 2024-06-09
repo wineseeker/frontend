@@ -5,9 +5,8 @@ import {useInView} from "react-intersection-observer";
 import {Wine} from "@/app/types/wine";
 import {useSearchParams} from "next/navigation";
 import {wineSearch} from "@/app/lib/wine-search";
-import {List, Spinner} from "flowbite-react";
+import {Alert, List, Spinner} from "flowbite-react";
 import Link from "next/link";
-import {regionName} from "@/app/lib/region-name";
 import {WineListItemSummaryInformation} from "@/app/components/main-layout/wine-list-item-summary-information";
 
 export function SearchResultList({initialSearchResult}: {initialSearchResult: Wine[]}) {
@@ -63,13 +62,18 @@ export function SearchResultList({initialSearchResult}: {initialSearchResult: Wi
     ));
 
     return (
-        <List unstyled className="divide-y space-y-0 divide-gray-200 dark:divide-gray-700 text-black items-center">
-            {searchResultItem}
-            {isMoreSearchResults && (
-                <li ref={ref} className={"py-3 block text-center"}>
-                    <Spinner size="xl" color={"rose"} />
-                </li>
-            )}
-        </List>
+        <>
+            <Alert color="info">
+                와인 이름이 중복된 경우에는 와이너리, 산도 등이 달라 실제로는 다른 와인이니 착오 없으시길 바랍니다. 비비노 평점과 리뷰 개수는 현재의 수치와 다를 수 있습니다.
+            </Alert>
+            <List unstyled className="divide-y space-y-0 divide-gray-200 dark:divide-gray-700 text-black items-center">
+                {searchResultItem}
+                {isMoreSearchResults && (
+                    <li ref={ref} className={"py-3 block text-center"}>
+                        <Spinner size="xl" color={"rose"} />
+                    </li>
+                )}
+            </List>
+        </>
     );
 }
