@@ -7,4 +7,4 @@ files:
 permissions:
   - object: /home/wineseeker/frontend
     owner: wineseeker
-    group: ubuntu
+    group: wineseeker
