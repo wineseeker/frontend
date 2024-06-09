@@ -6,6 +6,7 @@ phases:
       nodejs: 20
     commands:
       - corepack enable
+      - corepack use pnpm@latest
       - pnpm -v
       # pnpm store 위치 설정
       - pnpm config set store-dir .pnpm-store
