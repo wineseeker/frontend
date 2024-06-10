@@ -7,7 +7,7 @@ PROCESS_NAME="wine-seeker-frontend"
 if pm2 list | grep -q "$PROCESS_NAME"; then
     # 프로세스가 실행 중일 경우
     echo "$PROCESS_NAME is running. Restarting..."
-    pm2 reload "$PROCESS_NAME" --update-env
+    pm2 reload "$PROCESS_NAME"
 else
     # 프로세스가 실행 중이지 않을 경우
     echo "$PROCESS_NAME is not running. Starting..."
