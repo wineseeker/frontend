@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
 
     const userInfo = await getUserInfo()
 
-    if (userInfo !== null &&
+    /*if (userInfo !== null &&
         userInfo !== -1) {
         //이메일 인증이 안된 유저는 리다이렉트
         if (!userInfo.emailVerified &&
@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
         {
             return NextResponse.redirect(new URL('/email-verification', request.url))
         }
-    }
+    }*/
 
     if (request.nextUrl.pathname.startsWith('/account') && !request.nextUrl.pathname.startsWith('/account/delete')) {
         if (userInfo === null)
