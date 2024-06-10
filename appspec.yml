@@ -4,12 +4,18 @@ files:
   - source: /
     destination: /home/wineseeker/frontend
 
+file_exists_behavior: OVERWRITE
+
 permissions:
   - object: /home/wineseeker/frontend
     owner: wineseeker
     group: wineseeker
 
 hooks:
+  AfterInstall:
+    - location: shell-scripts/after_install.sh
+      timeout: 300
+      runas: wineseeker
   ApplicationStart:
     - location: shell-scripts/start_server.sh
       timeout: 300
