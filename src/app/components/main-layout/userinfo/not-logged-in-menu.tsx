@@ -38,6 +38,7 @@ export function NotLoggedInMenu({userInfo}: {userInfo: any}) {
                 timeout: 7000
             }])
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
