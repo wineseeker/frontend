@@ -3,7 +3,7 @@
 import {Button, Checkbox, Label, TextInput, Toast} from "flowbite-react";
 import {useFormState, useFormStatus} from "react-dom";
 import {deleteAccount} from "@/app/lib/delete-account";
-import {useContext, useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef} from "react";
 import {useRouter} from "next/navigation";
 import {UuidV4} from "@/app/lib/uuidv4";
 import {FaCheck} from "react-icons/fa6";
@@ -18,14 +18,10 @@ export function AccountDeleteForm() {
     const passwordInputRef = useRef<HTMLInputElement>(null);
     const [state, formAction] = useFormState(deleteAccount, initialState)
     const { pending } = useFormStatus()
-
-    const [step, setStep] = useState<number>(1)
-
     const router = useRouter();
 
     useEffect(() => {
-        if (step === 1 && state === undefined) {
-            setStep(step + 1)
+        if (state === undefined) {
             setToasts([{
                 id: UuidV4.generate(),
                 content: (
