@@ -7,9 +7,9 @@ PROCESS_NAME="wine-seeker-frontend"
 if pm2 list | grep -q "$PROCESS_NAME"; then
     # 프로세스가 실행 중일 경우
     echo "$PROCESS_NAME is running. Restarting..."
-    NODE_ENV=production pm2 restart "$PROCESS_NAME" --update-env
+    pm2 reload "$PROCESS_NAME" --update-env
 else
     # 프로세스가 실행 중이지 않을 경우
     echo "$PROCESS_NAME is not running. Starting..."
-    NODE_ENV=production pm2 start "pnpm run start" --name "$PROCESS_NAME"
+    pm2 start ecosystem.config.js
 fi
