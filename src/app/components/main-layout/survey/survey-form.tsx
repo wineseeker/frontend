@@ -123,6 +123,7 @@ export function SurveyForm() {
         } else if (question >= 3) {
             if (result.current !== null)
                 history.pushState({page: 'result'}, 'Result', '/result/' + result.current?.resultId);
+            document.title = '와인 취향 설문 결과 - 와인 시커'
             answerCompleted.current = true
         }
     },[question])
@@ -130,6 +131,7 @@ export function SurveyForm() {
     useEffect(() => {
         if (pathname.startsWith("/survey") && answerCompleted.current) {
             answerCompleted.current = false;
+            document.title = '와인 취향 설문 - 와인 시커'
             setQuestion(1);
         }
     }, [pathname]);

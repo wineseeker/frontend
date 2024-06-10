@@ -2,7 +2,7 @@ import type {Metadata} from "next";
 import {SurveyForm} from "@/app/components/main-layout/survey/survey-form";
 
 export const metadata: Metadata = {
-    title: "설문 조사",
+    title: "와인 취향 설문",
     description: "설문을 통해 와인을 추천받을 수 있습니다",
 };
 
