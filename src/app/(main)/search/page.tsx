@@ -32,7 +32,7 @@ export default async function Search({searchParams}: {searchParams: { // noinspe
     const initialSearchResult = await wineSearch(q as string);
 
     return (
-        <div className={"mt-4 mx-3 flex flex-col gap-4 md:container md:mx-auto"}>
+        <div className={"mt-4 flex flex-col gap-4 px-4 md:container md:mx-auto"}>
             <Header>{searchParams.q}의 검색 결과</Header>
             {(initialSearchResult.length > 0) ?
                 <Suspense><SearchResultList initialSearchResult={initialSearchResult} /></Suspense> :

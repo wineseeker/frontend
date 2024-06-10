@@ -5,7 +5,7 @@ import {List, Spinner} from "flowbite-react";
 import {useEffect, useState} from "react";
 import Link from "next/link";
 import {useInView} from "react-intersection-observer";
-import {getRecommendHistory} from "@/app/lib/get-recommend-history";
+import {getRecommendHistory} from "@/app/lib/recommend-history";
 
 export function RecommendHistoryList({initialRecommendHistory}: {initialRecommendHistory: RecommendHistoryElement[]}) {
     const [isClient, setIsClient] = useState(false)

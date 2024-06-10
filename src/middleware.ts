@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import {getUserInfo} from "@/app/lib/get-userinfo";
+import {getUserInfo} from "@/app/lib/userinfo";
 
 export async function middleware(request: NextRequest) {
 

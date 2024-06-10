@@ -3,7 +3,7 @@
 import {useEffect, useRef, useState} from "react";
 import {Alert, Button, Label, List, Radio, TextInput} from "flowbite-react";
 import {useFormState, useFormStatus} from "react-dom";
-import {getSurveyResult} from "@/app/lib/get-survey-result";
+import {getSurveyResult} from "@/app/lib/survey-result";
 import {usePathname, useRouter} from "next/navigation";
 import Link from "next/link";
 import {Top10WinesList} from "@/app/components/main-layout/top10-wines-list";
