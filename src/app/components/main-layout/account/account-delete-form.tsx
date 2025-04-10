@@ -5,7 +5,7 @@ import {useFormState, useFormStatus} from "react-dom";
 import {deleteAccount} from "@/app/lib/delete-account";
 import {useContext, useEffect, useRef} from "react";
 import {useRouter} from "next/navigation";
-import {UuidV4} from "@/app/lib/uuidv4";
+import {UuidV4} from "@/app/lib/uuid-v4";
 import {FaCheck} from "react-icons/fa6";
 import {ToastContext} from "@/app/components/providers/toast-provider";
 

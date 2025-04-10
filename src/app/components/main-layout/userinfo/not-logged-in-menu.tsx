@@ -4,7 +4,7 @@ import {Toast} from "flowbite-react"
 import {HiX} from "react-icons/hi"
 import {useContext, useEffect } from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
-import {UuidV4} from "@/app/lib/uuidv4";
+import {UuidV4} from "@/app/lib/uuid-v4";
 import {MobileLoginBtn} from "@/app/components/main-layout/userinfo/mobile-login-btn";
 import Link from "next/link";
 import PcSignupBtn from "@/app/components/main-layout/userinfo/pc-signup-btn";

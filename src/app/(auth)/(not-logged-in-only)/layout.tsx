@@ -1,4 +1,4 @@
-import {isLoggedIn} from "@/app/lib/isLoggedIn";
+import {isLoggedIn} from "@/app/lib/is-logged-in";
 import {AlreadyLoggedIn} from "@/app/components/auth/already-logged-in";
 
 export default async function Layout ({children}: {children: React.ReactNode}) {

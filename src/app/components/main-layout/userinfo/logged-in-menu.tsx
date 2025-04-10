@@ -6,7 +6,7 @@ import {useRouter} from "next/navigation";
 import {useContext, useEffect} from "react";
 import {ToastContext} from "@/app/components/providers/toast-provider";
 import {FaCheck, FaXmark} from "react-icons/fa6";
-import {UuidV4} from "@/app/lib/uuidv4";
+import {UuidV4} from "@/app/lib/uuid-v4";
 import Link from "next/link";
 
 export function LoggedInMenu({avatarUrl, userEmail}: {avatarUrl: string, userEmail: string}) {

@@ -1,7 +1,7 @@
 'use client'
 
 import React, {createContext, Dispatch, SetStateAction, useEffect, useState} from "react";
-import {UuidV4} from "@/app/lib/uuidv4";
+import {UuidV4} from "@/app/lib/uuid-v4";
 import {Toasts} from "@/app/components/toasts";
 
 //토스트 아이템 타입 정의
