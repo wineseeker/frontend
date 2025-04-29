@@ -3,7 +3,7 @@
 import {Wine} from "@/app/types/wine";
 import {notFound} from "next/navigation";
 
-export async function getRaking(page?: number): Promise<Wine[]> {
+export async function getRanking(page?: number): Promise<Wine[]> {
     let url = 'http://localhost:8000/ranking'
 
     if (page !== undefined) {

@@ -6,32 +6,32 @@ import {Wine} from "@/app/types/wine";
 import {Alert, List, Spinner} from "flowbite-react";
 import Link from "next/link";
 import {WineListItemSummaryInformation} from "@/app/components/main-layout/wine-list-item-summary-information";
-import {getRaking} from "@/app/lib/raking";
+import {getRanking} from "@/app/lib/ranking";
 
-export function RakingList({initialRaking}: {initialRaking: Wine[]}) {
-    const [raking, setRaking] = useState(initialRaking);
+export function RankingList({initialRanking}: {initialRanking: Wine[]}) {
+    const [ranking, setRanking] = useState(initialRanking);
     const [page, setPage] = useState(2);
-    const [isMoreRaking, setIsMoreRaking] = useState<boolean>(true);
+    const [isMoreRanking, setIsMoreRanking] = useState<boolean>(true);
     const {ref, inView} = useInView();
 
-    async function loadMoreRakingResults() {
-        const moreSearchResult = await getRaking(page);
-        setRaking(prevResults => [...prevResults, ...moreSearchResult]);
+    async function loadMoreRankingResults() {
+        const moreSearchResult = await getRanking(page);
+        setRanking(prevResults => [...prevResults, ...moreSearchResult]);
         if (moreSearchResult.length <= 0) {
-            setIsMoreRaking(false);
+            setIsMoreRanking(false);
         }
     }
 
     useEffect(() => {
         if (inView) {
             // noinspection JSIgnoredPromiseFromCall
-            loadMoreRakingResults();
+            loadMoreRankingResults();
             setPage(prevPage => prevPage + 1);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inView]);
 
-    const searchResultItem = raking.map((item, index) => (
+    const searchResultItem = ranking.map((item, index) => (
         <List.Item key={item.id} className={"" + (
             (index === 0) ? "gold-number" : (index === 1 ? "sliver-number" : ((index === 2) && "bronze-number")))}>
             <Link href={"/wine/" + item.id}
@@ -53,7 +53,7 @@ export function RakingList({initialRaking}: {initialRaking: Wine[]}) {
             </Alert>
             <List ordered className="divide-y space-y-0 divide-gray-200 dark:divide-gray-700 text-black items-center bold-list-numbers">
                 {searchResultItem}
-                {isMoreRaking && (
+                {isMoreRanking && (
                     <li ref={ref} className={"py-3 block text-center"}>
                         <Spinner size="xl" color={"rose"} />
                     </li>

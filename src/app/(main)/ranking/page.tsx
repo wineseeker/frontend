@@ -1,7 +1,7 @@
 import type {Metadata} from "next";
 import {Header} from "@/app/components/main-layout/header";
-import {RakingList} from "@/app/components/main-layout/raking/raking-list";
-import {getRaking} from "@/app/lib/raking";
+import {RankingList} from "@/app/components/main-layout/ranking/ranking-list";
+import {getRanking} from "@/app/lib/ranking";
 
 export const metadata: Metadata = {
     title: "랭킹",
@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 
 
 export default async function Page() {
-    const initialRaking = await getRaking()
+    const initialRaking = await getRanking()
     return (
         <div className={"mt-4 flex flex-col gap-4 px-4 md:container md:mx-auto"}>
             <Header>랭킹</Header>
-            <RakingList initialRaking={initialRaking}/>
+            <RankingList initialRanking={initialRaking}/>
         </div>
     )
 }
