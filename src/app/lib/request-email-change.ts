@@ -2,10 +2,12 @@
 
 import {cookies} from "next/headers";
 
+import baseUrl from "@/app/lib/base-url";
+
 export async function requestEmailChange(password: string, newEmail: string):Promise<true|number> {
     const sessionToken = cookies().get('session')?.value
 
-    const res = await fetch('http://localhost:8000/account/email', {
+    const res = await fetch(`${baseUrl}/account/email`, {
         method: 'PATCH',
         cache: 'no-store',
         headers: {

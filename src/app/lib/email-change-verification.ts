@@ -2,10 +2,12 @@
 
 import {cookies} from "next/headers";
 
+import baseUrl from "@/app/lib/base-url";
+
 export async function emailChangeVerification(initialState: any, formData: FormData) {
     const sessionToken = cookies().get('session')?.value
     try {
-        const res = await fetch('http://localhost:8000/account/email-verification', {
+        const res = await fetch(`${baseUrl}/account/email-verification`, {
             method: 'POST',
             cache: 'no-store',
             headers: {

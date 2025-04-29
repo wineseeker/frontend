@@ -2,12 +2,13 @@
 
 import {Wine} from "@/app/types/wine";
 import {notFound} from "next/navigation";
+import baseUrl from "@/app/lib/base-url";
 
 export async function getRanking(page?: number): Promise<Wine[]> {
-    let url = 'http://localhost:8000/ranking'
+    let url = `${baseUrl}/ranking`
 
     if (page !== undefined) {
-        url += '?page=' + page
+        url += `?page=${page}`
     }
 
     const res = await fetch(url, {
@@ -16,7 +17,7 @@ export async function getRanking(page?: number): Promise<Wine[]> {
 
     if (!res.ok) {
         if (res.status >= 500)
-            throw new Error('ops!')
+            throw new Error('서버 오류가 발생했습니다')
 
         notFound()
     }

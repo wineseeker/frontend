@@ -1,10 +1,11 @@
 'use server'
 
 import {cookies} from "next/headers";
+import baseUrl from "@/app/lib/base-url";
 
 export async function logoutAction() {
     try {
-        const res = await fetch('http://localhost:8000/account/logout', {
+        const res = await fetch(`${baseUrl}/account/logout`, {
             headers: {
                 cache: 'no-store',
                 authorization: `Bearer ${cookies().get('session')?.value}`

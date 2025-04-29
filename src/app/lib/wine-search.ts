@@ -3,14 +3,15 @@
 import {cookies} from "next/headers";
 import {notFound} from "next/navigation";
 import {Wine} from "@/app/types/wine";
+import baseUrl from "@/app/lib/base-url";
 
 export async function wineSearch(q: string, page?: number): Promise<Wine[]> {
     const sessionValue = cookies().get('session')?.value
 
-    let url = 'http://localhost:8000/search?q=' + q
+    let url = `${baseUrl}/search?q=${q}`
 
     if (page !== undefined) {
-        url += '&page=' + page
+        url += `&page=${page}`
     }
 
     const res = await fetch(url, {
@@ -22,7 +23,7 @@ export async function wineSearch(q: string, page?: number): Promise<Wine[]> {
 
     if (!res.ok) {
         if (res.status >= 500)
-            throw new Error('ops!')
+            throw new Error('서버 오류가 발생했습니다')
 
         notFound()
     }
@@ -31,7 +32,7 @@ export async function wineSearch(q: string, page?: number): Promise<Wine[]> {
 }
 
 export async function wineSearchAutoComplete(q: string) {
-    const res = await fetch('http://localhost:8000/search/auto-complete?q=' + q, {
+    const res = await fetch(`${baseUrl}/search/auto-complete?q=${q}`, {
         cache: 'no-store',
         headers: {
             'Authorization': `Bearer ${cookies().get('session')?.value}`

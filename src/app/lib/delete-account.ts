@@ -1,11 +1,12 @@
 'use server'
 
 import {cookies} from "next/headers";
+import baseUrl from "@/app/lib/base-url";
 
 export async function deleteAccount(initialState: any, formData: FormData) {
     const sessionCookieValue = cookies().get('session')?.value
 
-    const res = await fetch('http://localhost:8000/account', {
+    const res = await fetch(baseUrl + '/account', {
         method: 'DELETE',
         cache: 'no-store',
         headers: {

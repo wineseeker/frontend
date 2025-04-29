@@ -3,9 +3,11 @@
 import {redirect} from "next/navigation";
 import {cookies} from "next/headers";
 
+import baseUrl from "@/app/lib/base-url";
+
 export async function login(initialState: any, formData: FormData) {
     try {
-        const res = await fetch('http://localhost:8000/login', {
+        const res = await fetch(`${baseUrl}/login`, {
             method: 'POST',
             cache: 'no-store',
             headers: {

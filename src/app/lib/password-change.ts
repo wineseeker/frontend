@@ -2,10 +2,12 @@
 
 import {cookies} from "next/headers";
 
+import baseUrl from "@/app/lib/base-url";
+
 export async function passwordChange(prevState: any, formData: FormData) {
     const sessionToken = cookies().get('session')?.value
 
-    const res = await fetch('http://localhost:8000/account/password', {
+    const res = await fetch(`${baseUrl}/account/password`, {
         method: 'PATCH',
         cache: 'no-store',
         headers: {
