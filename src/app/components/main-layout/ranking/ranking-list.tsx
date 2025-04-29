@@ -33,7 +33,7 @@ export function RankingList({initialRanking}: {initialRanking: Wine[]}) {
 
     const searchResultItem = ranking.map((item, index) => (
         <List.Item key={item.id} className={"" + (
-            (index === 0) ? "gold-number" : (index === 1 ? "sliver-number" : ((index === 2) && "bronze-number")))}>
+            (index === 0) ? "gold-number" : (index === 1 ? "silver-number" : ((index === 2) && "bronze-number")))}>
             <Link href={"/wine/" + item.id}
                   className={"inline-block py-3"}>
                 <div className={"inline-flex flex-col"}>

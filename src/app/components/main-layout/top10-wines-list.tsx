@@ -25,7 +25,7 @@ export function Top10WinesList({top10Wines}: {top10Wines: Wine[]}) {
     const top10WinesListItem = top10Wines.map((wine, index) =>
         <List.Item key={wine.id}
                    className={"" + (
-                       (index === 0) ? "gold-number" : (index === 1 ? "sliver-number" : ((index === 2) && "bronze-number"))
+                       (index === 0) ? "gold-number" : (index === 1 ? "silver-number" : ((index === 2) && "bronze-number"))
                    )}>
             <Link href={"/wine/" + wine.id} className={"inline-block py-3"}>
                 <div className={"inline-flex flex-col"}>
